@@ -313,3 +313,15 @@ Tabs.Main3:AddButton({
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/GEC0/gec/refs/heads/main/Gec.Loader", true))()
 	end
 })
+
+Tabs.Main3:AddButton({
+	Title = "Script CpsHub",                             -- 👈 tên nút hiển thị
+	Description tự sài mà cảm nhận đi ai rảnh mà nói hoài ",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Rx1m/CpsHub/refs/heads/main/Hub",true))()
+	end
+})
