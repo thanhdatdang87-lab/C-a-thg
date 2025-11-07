@@ -39,7 +39,7 @@ CloseButton.MouseButton1Click:Connect(function()
 	ScreenGui:Destroy() -- ấn X sẽ tắt giao diện
 end)
 TextBox.Parent = Frame
-TextBox.PlaceholderText = "Nhập key tại đây 🍎"
+TextBox.PlaceholderText = "Nhập key tại đây "
 TextBox.Text = ""
 TextBox.Size = UDim2.new(0.9, 0, 0, 35)
 TextBox.Position = UDim2.new(0.05, 0, 0.25, 0)
@@ -48,14 +48,14 @@ TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 UICorner:Clone().Parent = TextBox
 
 CheckButton.Parent = Frame
-CheckButton.Text = "Kiểm tra key ✅"
+CheckButton.Text = "Kiểm tra key "
 CheckButton.Size = UDim2.new(0.4, 0, 0, 30)
 CheckButton.Position = UDim2.new(0.05, 0, 0.65, 0)
 CheckButton.BackgroundColor3 = Color3.fromRGB(80, 170, 80)
 UICorner:Clone().Parent = CheckButton
 
 GetKeyButton.Parent = Frame
-GetKeyButton.Text = "Lấy key 🔑"
+GetKeyButton.Text = "Lấy key "
 GetKeyButton.Size = UDim2.new(0.4, 0, 0, 30)
 GetKeyButton.Position = UDim2.new(0.55, 0, 0.65, 0)
 GetKeyButton.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
@@ -113,7 +113,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
 ImageButton.Size = UDim2.new(0, 40, 0, 40)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=88372477564760"  -- 👈 đổi ID ảnh nút mở menu tại đây (ảnh roblox)
+ImageButton.Image = "http://www.roblox.com/asset/?id=113861935242707"  -- 👈 đổi ID ảnh nút mở menu tại đây (ảnh roblox)
 
 UICorner.CornerRadius = UDim.new(1, 10)
 UICorner.Parent = ImageButton
@@ -140,11 +140,11 @@ local Window = Fluent:CreateWindow({
 -- 📑 Các tab (mục chính)
 local Tabs = {
 	Main0 = Window:AddTab({ Title = "Main" }),  -- 👈 đổi tên tab 1
-	Main1 = Window:AddTab({ Title = "BloxFruit☃️" }),  -- 👈 đổi tên tab 2
-	Main2 = Window:AddTab({ Title = "StealAndBrainGod🙈" }),     -- 👈 đổi tên tab 3
-	Main3 = Window:AddTab({ Title = "99 Đêm Trong Rừng💪" }),        -- 👈 đổi tên tab 4
-	Main4 = Window:AddTab({ Title = "GrowAGarden🤘" }),    -- 👈 đổi tên tab 5
-	Main5 = Window:AddTab({ Title = "plan vs brainrot 😈" }) -- 👈 đổi tên tab 6
+	Main1 = Window:AddTab({ Title = "BloxFruit" }),  -- 👈 đổi tên tab 2
+	Main2 = Window:AddTab({ Title = "StealAndBrainGod" }),     -- 👈 đổi tên tab 3
+	Main3 = Window:AddTab({ Title = "99 Đêm Trong Rừng" }),        -- 👈 đổi tên tab 4
+	Main4 = Window:AddTab({ Title = "GrowAGarden" }),    -- 👈 đổi tên tab 5
+	Main5 = Window:AddTab({ Title = "plan vs brainrot " }) -- 👈 đổi tên tab 6
 }
 
 ------------------------------------------------
@@ -152,25 +152,25 @@ local Tabs = {
 ------------------------------------------------
 Tabs.Main0:AddButton({
 	Title = "Tổng Hợp Game 2",              -- 👈 tên nút
-	Description = "Mới Chơi TikTok",-- 👈 mô tả nút
+	Description = "Ủng hộ đê nhìn j",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("https:tiktok.com/@tng.hp.game.28")  -- 👈 link sao chép
 	end
 })
 
 Tabs.Main0:AddButton({
-	Title = "tik",
-	Description = "làm chơi thui",
+	Title = "Kênh Youtube",
+	Description = "ít làm video",
 	Callback = function()
 		setclipboard("https://www.youtube.com/@T%E1%BB%95ngH%E1%BB%A3pgame2-v4i")     -- 👈 link khác
 	end
 })
 
 Tabs.Main0:AddButton({
-	Title = "tiktok",
-	Description = "fl tiktok để biết thêm nhiều script",
+	Title = "Discord",
+	Description = "(Coming Soon)",
 	Callback = function()
-		setclipboard("https://www.tiktok.com/@b.yt03?_t=ZS-90QsHmSjaiu&_r=1")
+		setclipboard(" Cố chấp ghê á?")
 	end
 })
 
@@ -236,5 +236,56 @@ Tabs.Main1:AddButton({
 		}
 		getgenv().Team = "Marines"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/Min/refs/heads/main/MinUp27Vn"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "Script BananaPreFake",                             -- 👈 tên nút hiển thị
+	Description = "tất cả cx ổn mà sea event chx test=)) ",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+getgenv().Key = "F4hb2akdkGhBb8P34QtRe7K43Fj"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hnc-roblox/Obii_HNCRobloxYeuEm.vthangsitink-/refs/heads/main/BananaCatHub.lua"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "Script TedyHub",                             -- 👈 tên nút hiển thị
+	Description = "tự mà get key ko muốn ib a lấy key=))",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		repeat task.wait() until game:IsLoaded() and game:GetService("Players") and game.Players.LocalPlayer and game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TEDDYHUB-FREEMIUM"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "Script SV ít người",                             -- 👈 tên nút hiển thị
+	Description = " Chỉ mới test bloxfruit mấy game khác thì k biết ",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/anuragaming1/Meow_gaming/refs/heads/main/Servervip.lua.txt"))() 
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "Script MaruHubFreemium",                             -- 👈 tên nút hiển thị
+	Description = " thấy Sài thì kém sang hơn pre nhma sài ngon hơn=)) ",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		getgenv().Team = "Marines"loadstring(game:HttpGet("https://raw.githubusercontent.com/natoppo044/GGEZ/refs/heads/main/MaruHub.lua"))()
 	end
 })
