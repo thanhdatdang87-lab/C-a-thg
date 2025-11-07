@@ -1,5 +1,5 @@
 -- 1️⃣ KHAI BÁO KEY & LINK GET KEY
-local key = "TeamTHGPre" -- Key bạn đặt
+local key = "TeamTHGPremium" -- Key bạn đặt
 local keyLink = "https://www.tiktok.com/@b.yt03" -- Link khi ấn "Get Key"
 
 -- 2️⃣ GIAO DIỆN NHẬP KEY
