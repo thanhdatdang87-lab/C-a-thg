@@ -113,7 +113,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
 ImageButton.Size = UDim2.new(0, 40, 0, 40)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=113861935242707"  -- 👈 đổi ID ảnh nút mở menu tại đây (ảnh roblox)
+ImageButton.Image = "http://www.roblox.com/asset/?id=88372477564760"  -- 👈 đổi ID ảnh nút mở menu tại đây (ảnh roblox)
 
 UICorner.CornerRadius = UDim.new(1, 10)
 UICorner.Parent = ImageButton
@@ -311,5 +311,40 @@ Tabs.Main3:AddButton({
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/GEC0/gec/refs/heads/main/Gec.Loader", true))()
+	end
+})
+Tabs.Main3:AddButton({
+	Title = "Script VoidWare",                             -- 👈 tên nút hiển thị
+	Description = "nghệ ngta nói là người VN làm sài cx ổn",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))()
+	end
+})
+
+Tabs.Main5:AddButton({
+	Title = "Script SpeedXHub",                             -- 👈 tên nút hiển thị
+	Description = "nghe nói cái này sài ngon nhất rồi=))",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+	end
+})
+
+Tabs.Main5:AddButton({
+	Title = "Script KhanhLyHub",                             -- 👈 tên nút hiển thị
+	Description = " Sài cx ổn👍 ",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/khoavipok/Khanhlytbao/refs/heads/main/Plants%20Vs%20Brainrots"))()
 	end
 })
