@@ -1,6 +1,6 @@
 -- 1️⃣ KHAI BÁO KEY & LINK GET KEY
 local key = "TeamTHGPremium" -- Key bạn đặt
-local keyLink = "https://yeumoney.com/GGoBHKbc0" -- Link khi ấn "Get Key"
+local keyLink = "phần bio ở kênh tt" -- Link khi ấn "Get Key"
 
 -- 2️⃣ GIAO DIỆN NHẬP KEY
 local CoreGui = game:GetService("CoreGui")
