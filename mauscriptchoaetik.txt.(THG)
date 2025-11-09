@@ -227,7 +227,7 @@ Tabs.Main1:AddButton({
 })
 
 Tabs.Main1:AddButton({
-	Title = "Script MinV27🍼🍽️🔪🥄🍴🪓💉🗡️⚔️💣🔑🔑🗝️",                             -- 👈 tên nút hiển thị
+	Title = "Script MinV27",                             -- 👈 tên nút hiển thị
 	Description = "Nền xanh lá sài cx ổn👍 ",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
