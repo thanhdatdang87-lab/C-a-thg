@@ -151,6 +151,14 @@ local Tabs = {
 -- TAB 1: Các kênh tiktok
 ------------------------------------------------
 Tabs.Main0:AddButton({
+	Title = "Bảng tin update Script và vài thông tin lật vật",              -- 👈 tên nút
+	Description = "(Ngày 10 tháng 11). Update thêm 3 Script bloxfruit",-- 👈 mô tả nút
+	Callback = function()
+		setclipboard("có ý kiến hay script ngon thì ib kênh tiktok a")  -- 👈 link sao chép
+	end
+})
+
+Tabs.Main0:AddButton({
 	Title = "Tổng Hợp Game 2",              -- 👈 tên nút
 	Description = "Ủng hộ đê nhìn j.",-- 👈 mô tả nút
 	Callback = function()
@@ -171,14 +179,6 @@ Tabs.Main0:AddButton({
 	Description = "(Coming Soon)",
 	Callback = function()
 		setclipboard(" Cố chấp ghê á trời?")
-	end
-})
-
-Tabs.Main0:AddButton({
-	Title = "Bảng tin update Script và vài thông tin lật vật",              -- 👈 tên nút
-	Description = "(Ngày 10 tháng 11). Update thêm 3 Script bloxfruit",-- 👈 mô tả nút
-	Callback = function()
-		setclipboard("có ý kiến hay script ngon thì ib kênh tiktok a")  -- 👈 link sao chép
 	end
 })
 
