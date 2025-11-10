@@ -302,6 +302,30 @@ Tabs.Main1:AddButton({
 	end
 })
 
+Tabs.Main1:AddButton({
+	Title = "Script DatThgV1",                             -- 👈 tên nút hiển thị
+	Description = " Script này k phải là script của tui nhá",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/DatThg/refs/heads/main/DatThgV1"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "Script TsuoHub",                             -- 👈 tên nút hiển thị
+	Description = "script này tùy hứng lắm",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Tsuo7/TsuoHub/main/Tsuoscripts"))()
+	end
+})
+
 Tabs.Main2:AddButton({
 	Title = "Script ChilliHub",                             -- 👈 tên nút hiển thị
 	Description = " tự sài mà cảm nhận đi ai rảnh mà nói hoài ",-- 👈 mô tả
