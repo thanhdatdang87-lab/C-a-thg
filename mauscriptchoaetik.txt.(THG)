@@ -326,6 +326,18 @@ Tabs.Main1:AddButton({
 	end
 })
 
+Tabs.Main1:AddButton({
+	Title = "Script QuanTumOnyx",                             -- 👈 tên nút hiển thị
+	Description = " Script này cái cx ngon trừ seaevent ra=))",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))()
+	end
+})
+
 Tabs.Main2:AddButton({
 	Title = "Script ChilliHub",                             -- 👈 tên nút hiển thị
 	Description = " tự sài mà cảm nhận đi ai rảnh mà nói hoài ",-- 👈 mô tả
