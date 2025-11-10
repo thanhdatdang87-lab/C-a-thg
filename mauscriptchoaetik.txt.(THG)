@@ -152,9 +152,17 @@ local Tabs = {
 ------------------------------------------------
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update Script và vài thông tin lật vật",              -- 👈 tên nút
-	Description = "(Ngày 10 tháng 11). Update thêm 3 Script bloxfruit",-- 👈 mô tả nút
+	Description = "(Ngày 11 tháng 11). Update thêm 2 Script bloxfruit+1 script 99 night",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("có ý kiến hay script ngon thì ib kênh tiktok a")  -- 👈 link sao chép
+	end
+})
+
+Tabs.Main0:AddButton({
+	Title = "XIN LƯU Ý",              -- 👈 tên nút
+	Description = "Tui sẽ k chịu trách nhiệm những script trong đây tui chỉ có trách nhiệm thử xem script có hoạt động hay k thôi nên bị band hay rs lv vui lòng k đổ thừa!!! ",-- 👈 mô tả nút
+	Callback = function()
+		setclipboard("https:tiktok.com/@tng.hp.game.28")  -- 👈 link sao chép
 	end
 })
 
@@ -211,7 +219,7 @@ Tabs.Main1:AddButton({
 
 Tabs.Main1:AddButton({
 	Title = "HiruHub",                             -- 👈 tên nút hiển thị
-	Description = "Script này ngon ngang redz nhá =))",-- 👈 mô tả
+	Description = "Script này cũng ổn nhma tùy=)))",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
@@ -435,7 +443,7 @@ Tabs.Main3:AddButton({
 })
 
 Tabs.Main3:AddButton({
-	Title = "Script RingTaHub)",                             -- 👈 tên nút hiển thị
+	Title = "Script RingTaHub",                             -- 👈 tên nút hiển thị
 	Description = "nghe nói script này của người VN nhma sài cx ổn",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
