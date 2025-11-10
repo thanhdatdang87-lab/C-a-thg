@@ -198,6 +198,34 @@ Tabs.Main1:AddButton({
 })
 
 Tabs.Main1:AddButton({
+	Title = "XeterHub",                             -- 👈 tên nút hiển thị
+	Description = "Script này ngon ngang redz nhá =))",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "HiruHub",                             -- 👈 tên nút hiển thị
+	Description = "Script này ngon ngang redz nhá =))",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		getgenv().Settings = {
+JoinTeam = true,
+Team = "Marines"-- Pirates or Marines
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KiddoHiru/BloxFruits/main/Source.lua"))()
+	end
+})
+
+Tabs.Main1:AddButton({
 	Title = "BlueXHub",                             -- 👈 tên nút hiển thị
 	Description = "Script này săn sea event mà tìm thì khó",-- 👈 mô tả
 	Callback = function()
@@ -415,6 +443,22 @@ Tabs.Main3:AddButton({
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/99daysloader.github.io/refs/heads/main/ringta.lua"))()
+	end
+})
+
+Tabs.Main3:AddButton({
+	Title = "téoUpdate",                             -- 👈 tên nút hiển thị
+	Description = "Script này là của bạn téo mới làm nên k xịn như mấy script khác đc",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		getgenv().Settings = {
+JoinTeam = true,
+Team = "Marines"-- Pirates or Marines
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/teoscrvn/T-ng-h-p-/refs/heads/main/teoupdate.txt", true))()
 	end
 })
 
