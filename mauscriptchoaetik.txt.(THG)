@@ -152,7 +152,7 @@ local Tabs = {
 ------------------------------------------------
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update Script và vài thông tin lật vật",              -- 👈 tên nút
-	Description = "(Ngày 11 tháng 11). Update thêm 2 Script bloxfruit+1 script 99 night",-- 👈 mô tả nút
+	Description = "(Ngày 12 tháng 11). Update thêm 2 Script bloxfruit+1 script StealABrainrot",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("có ý kiến hay script ngon thì ib kênh tiktok a")  -- 👈 link sao chép
 	end
@@ -267,6 +267,34 @@ Tabs.Main1:AddButton({
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/hnc-roblox/Free/refs/heads/main/MaruHubPremiumFake.HNC%20Roblox.lua"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "VxezeHub",                             -- 👈 tên nút hiển thị
+	Description = "Script này chx test sâu cho lắm nên k bt",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/refs/heads/main/VxezeHubMain"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "SpeedHubV5",                             -- 👈 tên nút hiển thị
+	Description = "Script này giao diện sẽ k quen mấy nhma sài cx ổn",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		getgenv().Settings = {
+JoinTeam = true,
+Team = "Marines"-- Pirates or Marines
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
 	end
 })
 
@@ -391,6 +419,22 @@ Tabs.Main2:AddButton({
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a3e13a4a85ac4c2da17a6baab051ee1b.lua"))()
+	end
+})
+
+Tabs.Main2:AddButton({
+	Title = "VietNamHub",                             -- 👈 tên nút hiển thị
+	Description = "Script này cx đc tại k chs steal nhiều nên tự trải nhiệm",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		getgenv().Settings = {
+JoinTeam = true,
+Team = "Marines"-- Pirates or Marines
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/replit8173/VietnamHub/refs/heads/main/VietnamseHub.lua", true))()
 	end
 })
 
