@@ -152,7 +152,7 @@ local Tabs = {
 ------------------------------------------------
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update Script và vài thông tin lật vật",              -- 👈 tên nút
-	Description = "(Ngày 12 tháng 11). Update thêm 2 Script bloxfruit+1 script StealABrainrot",-- 👈 mô tả nút
+	Description = "(Ngày 13 tháng 11). Update thêm 2 Script bloxfruit",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("có ý kiến hay script ngon thì ib kênh tiktok a")  -- 👈 link sao chép
 	end
@@ -283,6 +283,18 @@ Tabs.Main1:AddButton({
 })
 
 Tabs.Main1:AddButton({
+	Title = "TrẩuV3Hub",                             -- 👈 tên nút hiển thị
+	Description = "Script này thì khỏi nói rầu",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/traurobloxdeptrai/traukhoaito/refs/heads/main/traurobloxv3.lua"))()
+	end
+})
+
+Tabs.Main1:AddButton({
 	Title = "SpeedHubV5",                             -- 👈 tên nút hiển thị
 	Description = "Script này giao diện sẽ k quen mấy nhma sài cx ổn",-- 👈 mô tả
 	Callback = function()
@@ -308,6 +320,22 @@ Tabs.Main1:AddButton({
 		}
 		getgenv().Team = "Marines"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/Min/refs/heads/main/MinUp27Vn"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "ZisHub",                             -- 👈 tên nút hiển thị
+	Description = "Script này farm cx đc",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		getgenv().Settings = {
+JoinTeam = true,
+Team = "Marines"-- Pirates or Marines
+}
+loadstring(game:HttpGet("https://github.com/LuaCrack/Zis/raw/refs/heads/main/ZisUp27Vn"))()
 	end
 })
 
