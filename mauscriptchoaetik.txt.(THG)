@@ -152,7 +152,7 @@ local Tabs = {
 ------------------------------------------------
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update Script và vài thông tin lật vật",              -- 👈 tên nút
-	Description = "(Ngày 14 tháng 11). "lười up 2 ngày",-- 👈 mô tả nút
+	Description = "(Ngày 14 tháng 11). "lười up xin nghỉ 2 day",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("có ý kiến hay script ngon thì ib kênh tiktok a")  -- 👈 link sao chép
 	end
