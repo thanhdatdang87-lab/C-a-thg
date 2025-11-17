@@ -3,7 +3,7 @@ local validKeys = {
     "TeamTHGPremium ",     -- Key 1
     "TeamTHGPremium", -- Key 2
 }
-local keyLink = "https://www.tiktok.com/@b.yt03" -- Link lấy key
+local keyLink = "https://yeumoney.com/GGoBHKbc0" -- Link lấy key
 
 -- 2️⃣ GIAO DIỆN NHẬP KEY
 local CoreGui = game:GetService("CoreGui")
@@ -25,7 +25,7 @@ Frame.Position = UDim2.new(0.5, -150, 0.5, -80)
 UICorner.Parent = Frame
 
 TextBox.Parent = Frame
-TextBox.PlaceholderText = "Nhập key tại đây 🔑"
+TextBox.PlaceholderText = "Nhập key tại đây"
 TextBox.Text = ""
 TextBox.Size = UDim2.new(0.9, 0, 0, 35)
 TextBox.Position = UDim2.new(0.05, 0, 0.25, 0)
@@ -34,14 +34,14 @@ TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 UICorner:Clone().Parent = TextBox
 
 CheckButton.Parent = Frame
-CheckButton.Text = "Kiểm tra key ✅"
+CheckButton.Text = "Kiểm tra key"
 CheckButton.Size = UDim2.new(0.4, 0, 0, 30)
 CheckButton.Position = UDim2.new(0.05, 0, 0.65, 0)
 CheckButton.BackgroundColor3 = Color3.fromRGB(80, 170, 80)
 UICorner:Clone().Parent = CheckButton
 
 GetKeyButton.Parent = Frame
-GetKeyButton.Text = "Lấy key 🔑"
+GetKeyButton.Text = "Lấy key"
 GetKeyButton.Size = UDim2.new(0.4, 0, 0, 30)
 GetKeyButton.Position = UDim2.new(0.55, 0, 0.65, 0)
 GetKeyButton.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
@@ -74,13 +74,13 @@ CheckButton.MouseButton1Click:Connect(function()
 		keyOk = true
 		ScreenGui:Destroy()
 		game.StarterGui:SetCore("SendNotification", {
-			Title = "Thành công 🎉";
+			Title = "Thành công";
 			Text = "Key đúng! Script sẽ khởi chạy.";
 			Duration = 3;
 		})
 	else
 		game.StarterGui:SetCore("SendNotification", {
-			Title = "Sai key ❌";
+			Title = "Sai key";
 			Text = "Key không hợp lệ, lấy key mới nhé!";
 			Duration = 3;
 		})
