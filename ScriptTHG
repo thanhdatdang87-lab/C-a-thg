@@ -152,7 +152,7 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update script và thông tin lật vật",              -- 👈 tên nút
-	Description = "(ngày 19 tháng 11) ngày hôm qua +2 script gardentowerdefense hôm nay với ngày mai làm biến nghỉ=))",-- 👈 mô tả nút
+	Description = "(ngày 19 tháng 11) làm biến 2 ngày",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("https:tiktok.com/@tng.hp.game.28")  -- 👈 link sao chép
 	end
