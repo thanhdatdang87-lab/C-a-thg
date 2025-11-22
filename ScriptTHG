@@ -152,7 +152,7 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update script và thông tin lật vật",              -- 👈 tên nút
-	Description = "(ngày 22 tháng 11) đã hết làm biến up thêm 2 script bloxfruit",-- 👈 mô tả nút
+	Description = "(ngày 22 tháng 11) đã hết làm biến up thêm 2 script bloxfruit(đã up)",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("https:tiktok.com/@tng.hp.game.28")  -- 👈 link sao chép
 	end
@@ -187,7 +187,7 @@ Tabs.Main0:AddButton({
 ------------------------------------------------
 Tabs.Main1:AddButton({
 	Title = "GravityHub",                             -- 👈 tên nút hiển thị
-	Description = "Script này ngon mà load lâu tầm 10s-1p ",-- 👈 mô tả
+	Description = "Script này ngon load nhanh hơn nhiều ròi",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
@@ -280,7 +280,7 @@ Tabs.Main1:AddButton({
 
 Tabs.Main1:AddButton({
 	Title = "Script DatThgV1",                             -- 👈 tên nút hiển thị
-	Description = "Script này k phải của tui nhá",-- 👈 mô tả
+	Description = "Script này k phải của tui nhá mà là của idol khác",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
@@ -317,7 +317,7 @@ Tabs.Main1:AddButton({
 
 Tabs.Main1:AddButton({
 	Title = "RedzHub",                             -- 👈 tên nút hiển thị
-	Description = "Script Fake Redz mà sài cx ngon lắm à nhoa",-- 👈 mô tả
+	Description = "Script Fake Redz mà sài cx ngon lắm à nhá",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
