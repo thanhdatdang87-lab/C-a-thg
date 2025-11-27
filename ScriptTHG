@@ -198,6 +198,19 @@ Tabs.Main1:AddButton({
 })
 
 Tabs.Main1:AddButton({
+	Title = "Script TeddyHubFarm",                             -- 👈 tên nút hiển thị
+	Description = "script này có giáo diện giống tới 80-90% banana nhma hàng free thì sao mà bằng đc v là ngon lắm r",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TeddyHub.lua"))()
+	end
+})
+
+Tabs.Main1:AddButton({
 	Title = "XeterHub",                             -- 👈 tên nút hiển thị
 	Description = "Script này ngon ngang redz nhá =))",-- 👈 mô tả
 	Callback = function()
