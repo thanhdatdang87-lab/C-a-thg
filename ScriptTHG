@@ -139,12 +139,12 @@ local Window = Fluent:CreateWindow({
 
 -- 📑 Các tab (mục chính)
 local Tabs = {
-	Main0 = Window:AddTab({ Title = "Main" }),  -- 👈 đổi tên tab 1
-	Main1 = Window:AddTab({ Title = "BloxFruit" }),  -- 👈 đổi tên tab 2
-	Main2 = Window:AddTab({ Title = "StealABrainGod" }),     -- 👈 đổi tên tab 3
-	Main3 = Window:AddTab({ Title = "99 Đêm Trong Rừng" }),        -- 👈 đổi tên tab 4
-	Main4 = Window:AddTab({ Title = "GardenTowerDefense" }),    -- 👈 đổi tên tab 5
-	Main5 = Window:AddTab({ Title = "plan vs brainrot " }) -- 👈 đổi tên tab 6
+	Main0 = Window:AddTab({ Title = "Main🗒️" }),  -- 👈 đổi tên tab 1
+	Main1 = Window:AddTab({ Title = "BloxFruit⚔️" }),  -- 👈 đổi tên tab 2
+	Main2 = Window:AddTab({ Title = "StealABrainGod🐘" }),     -- 👈 đổi tên tab 3
+	Main3 = Window:AddTab({ Title = "99 Đêm Trong Rừng🌲" }),        -- 👈 đổi tên tab 4
+	Main4 = Window:AddTab({ Title = "GardenTowerDefense🌱" }),    -- 👈 đổi tên tab 5
+	Main5 = Window:AddTab({ Title = "plan vs brainrot🐊" }) -- 👈 đổi tên tab 6
 }
 ------------------------------------------------
 -- TAB 1: Các kênh tiktok
@@ -152,14 +152,14 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update script và thông tin lật vật",              -- 👈 tên nút
-	Description = "(ngày 25 tháng 11) đã thêm 1 script bloxfruit,có up là đc rồi đòi j nữa???",-- 👈 mô tả nút
+	Description = "(ngày 27 tháng 11) đã thêm 1 script bloxfruit,up cho script xịn đó còn đòi hỏi nữa đi bản TeddyHubfarm này k dễ tìm đâu nhá",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("https:tiktok.com/@tng.hp.game.28")  -- 👈 link sao chép
 	end
 })
 
 Tabs.Main0:AddButton({
-	Title = "Tổng Hợp Game 2",              -- 👈 tên nút
+	Title = "Tổng Hợp Game 2❤️",              -- 👈 tên nút
 	Description = "Ủng hộ đê nhìn j",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("https:tiktok.com/@tng.hp.game.28")  -- 👈 link sao chép
@@ -167,7 +167,7 @@ Tabs.Main0:AddButton({
 })
 
 Tabs.Main0:AddButton({
-	Title = "Kênh Youtube",
+	Title = "Kênh Youtube💬",
 	Description = "ít làm video",
 	Callback = function()
 		setclipboard("https://www.youtube.com/@T%E1%BB%95ngH%E1%BB%A3pgame2-v4i")     -- 👈 link khác
@@ -176,7 +176,7 @@ Tabs.Main0:AddButton({
 
 Tabs.Main0:AddButton({
 	Title = "Discord",
-	Description = "(Coming Soon)",
+	Description = "(Coming Soon) ❌",
 	Callback = function()
 		setclipboard(" Cố chấp ghê á?")
 	end
@@ -199,7 +199,7 @@ Tabs.Main1:AddButton({
 
 Tabs.Main1:AddButton({
 	Title = "Script TeddyHubFarm",                             -- 👈 tên nút hiển thị
-	Description = "script này có giáo diện giống tới 80-90% banana nhma hàng free thì sao mà bằng đc v là ngon lắm r",-- 👈 mô tả
+	Description = "script này có giao diện giống tới 80-90% banana nhma hàng free thì sao mà bằng đc v là ngon lắm r",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
