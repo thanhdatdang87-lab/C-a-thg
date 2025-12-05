@@ -152,7 +152,7 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update script và thông tin lật vật",              -- 👈 tên nút
-	Description = "(ngày 27 tháng 11) đã thêm 1 script bloxfruit,up cho script xịn đó còn đòi hỏi nữa đi bản TeddyHubfarm này k dễ tìm đâu nhá",-- 👈 mô tả nút
+	Description = "(ngày 05 tháng 12) đã thêm 2 script bloxfruit,xương rồng đơm lá đơm hoa,Nc đông đầy trên cao nguyên lá,cũng là lúc hoàng đế trở về nhà!!!",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("https:tiktok.com/@tng.hp.game.28")  -- 👈 link sao chép
 	end
@@ -162,7 +162,7 @@ Tabs.Main0:AddButton({
 	Title = "Tổng Hợp Game 2❤️",              -- 👈 tên nút
 	Description = "Ủng hộ đê nhìn j",-- 👈 mô tả nút
 	Callback = function()
-		setclipboard("https:tiktok.com/@tng.hp.game.28")  -- 👈 link sao chép
+		setclipboard("tiktok.com/@tonghopgamemoimatacc")  -- 👈 link sao chép
 	end
 })
 
@@ -219,6 +219,54 @@ Tabs.Main1:AddButton({
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "RedzHubFake",                             -- 👈 tên nút hiển thị
+	Description = "Script na ná thôi đừng mong chờ j nhiều =))) nhma giống tới 80% lận nhá",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/20f318386e3fbf069ee3fa797cfc9f34.lua"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "AryaHubKaitun",                             -- 👈 tên nút hiển thị
+	Description = "Không có sài kaitun nhiều nên tự mà trải nhiệmi",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		Config = {
+Team = "Pirates",
+Configuration = {
+HopWhenIdle = true,
+AutoHop = true,
+AutoHopDelay = 60 * 60,
+FpsBoost = false,
+BlackScreen = true
+},
+Items = {
+-- Melees
+AutoFullyMelees = true,
+-- Swords
+Saber = true,
+CursedDualKatana = false,
+-- Guns
+SoulGuitar = false,
+-- Upgrades
+RaceV2 = true
+},
+Settings = {
+StayInSea2UntilHaveDarkFragments = false
+}
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hhl29042008-ops/script/refs/heads/main/cac"))()
 	end
 })
 
