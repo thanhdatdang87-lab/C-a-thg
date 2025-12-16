@@ -152,9 +152,9 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update script và thông tin lật vật",              -- 👈 tên nút
-	Description = "(ngày 05 tháng 12) đã thêm 2 script bloxfruit,xương rồng đơm lá đơm hoa,Nc đông đầy trên cao nguyên lá,cũng là lúc hoàng đế trở về nhà!!!",-- 👈 mô tả nút
+	Description = "(ngày 16 tháng 12) đã thêm 2 script bloxfruit!",-- 👈 mô tả nút
 	Callback = function()
-		setclipboard("https:tiktok.com/@tng.hp.game.28")  -- 👈 link sao chép
+		setclipboard("đã là bảng tin thì k có link đou")  -- 👈 link sao chép
 	end
 })
 
@@ -499,6 +499,30 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Teddyseetink/Haidepza
 Tabs.Main1:AddButton({
 	Title = "Script MeowHub",                             -- 👈 tên nút hiển thị
 	Description = " áp dụng với mấy game khác dùng để tìm SV ít người",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/anuragaming1/Meow_gaming/refs/heads/main/Servervip.lua.txt"))() 
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "Script Yiner",                             -- 👈 tên nút hiển thị
+	Description = "Script này nghe nói là auto bounty mà hok sài đủ lâu nên k bic",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/anuragaming1/Meow_gaming/refs/heads/main/Servervip.lua.txt"))() 
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "Script blueXHub",                             -- 👈 tên nút hiển thị
+	Description = "Script này là hàng colab giữa admin blue với Redz real nên hơi khác nhma rất ngon nhé",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
