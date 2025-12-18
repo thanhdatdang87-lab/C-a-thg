@@ -16,7 +16,7 @@ local EXPIRE_HOURS = 48
 
 local SCRIPT_CHINH = [[
     -- SCRIPT CHÍNH CỦA BẠN
-    print("🔥 Script Premium đang chạy...")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/thanhdatdang87-lab/C-a-thg/refs/heads/main/ScriptTHG", true))()
     
     -- Ví dụ:
     -- loadstring(game:HttpGet("https://raw.githubusercontent.com/thanhdatdang87-lab/C-a-thg/refs/heads/main/ScriptTHG", true))()
