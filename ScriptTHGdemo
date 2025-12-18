@@ -11,7 +11,7 @@ local SCRIPT_CHINH = [[
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ScpGuest666/Random-Roblox-script/refs/heads/main/Roblox%20WallHop%20V2%20script"))()
 ]]
 
-local allowedKeys = {"TeamTHGPremium ", "TeamTHGPremium"}   -- 2 key hợp lệ
+local allowedKeys = {"TeamTHGPremiumha ", "TeamTHGPremiumha"}   -- 2 key hợp lệ
 local saveFile = "key_24h.txt"         -- file lưu thời gian
 
 local function now()
