@@ -1,148 +1,225 @@
--------------------------[ SETTINGS ]-------------------------
-local key1 = "TeamTHGPremium"
-local key2 = "TeamTHGPremium "
-local validHours = 24  -- Thời hạn key
-local saveFile = "keysaved.txt"
---------------------------------------------------------------
+--============================================================
+-- 🔑 KEY SYSTEM 48H - FIXED KEYS
+--============================================================
 
+-- THAY ĐỔI KEY CỐ ĐỊNH Ở ĐÂY
+local allowedKeys = {
+    "TeamTHGPremium",    -- Key 1
+    "TeamTHGPremium ",       -- Key 2  
+    "TeamTHGPremium",       -- Key 3
+    "TeamTHGPremium",       -- Key 4
+    "TeamTHGPremium "          -- Key 5
+}
+
+local saveFile = "key_48h.dat"
+local EXPIRE_HOURS = 48
+
+local SCRIPT_CHINH = [[
+    -- SCRIPT CHÍNH CỦA BẠN
+    print("🔥 Script Premium đang chạy...")
+    
+    -- Ví dụ:
+    -- loadstring(game:HttpGet("https://raw.githubusercontent.com/thanhdatdang87-lab/C-a-thg/refs/heads/main/ScriptTHG", true))()
+]]
+
+--============================================================
+-- 🛠 UTILITY FUNCTIONS
+--============================================================
 local function now()
-	return os.time()
+    return os.time()
 end
 
-local function saveKeyTime()
-	writefile(saveFile, tostring(now() + validHours * 3600))
+local function saveActivation(key)
+    -- Lưu: key + thời gian hết hạn
+    local data = {
+        key = key,
+        expire = now() + (EXPIRE_HOURS * 3600),
+        activated = os.date("%Y-%m-%d %H:%M:%S")
+    }
+    
+    local json = game:GetService("HttpService"):JSONEncode(data)
+    writefile(saveFile, json)
 end
 
-local function isKeyValid()
-	if not isfile(saveFile) then
-		return false
-	end
-	
-	local expire = tonumber(readfile(saveFile))
-	return expire ~= nil and expire > now()
+local function isActivated()
+    if not isfile(saveFile) then
+        return false, nil
+    end
+    
+    local success, data = pcall(function()
+        local content = readfile(saveFile)
+        return game:GetService("HttpService"):JSONDecode(content)
+    end)
+    
+    if not success then
+        return false, nil
+    end
+    
+    -- Kiểm tra thời gian hết hạn
+    if data.expire and data.expire >= now() then
+        return true, data.key
+    end
+    
+    return false, nil
 end
 
---------------------------------------------------------------
--- 1) KIỂM TRA COI KEY CÒN HẠN HAY KHÔNG
-if isKeyValid() then
-	print("Key vẫn còn hạn, bypass UI!")
-	
-	-- CHẠY SCRIPT CHÍNH Ở ĐÂY
-	-- https://yeumoney.com/GGoBHKbc0
-	
-	return
-end
---------------------------------------------------------------
-
-
--------------- UI PHẦN NÀY GIỐNG Y NHƯ BẢN TRƯỚC --------------
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-
-if player:FindFirstChild("KeyUI") then
-	player.KeyUI:Destroy()
+local function isValidKey(inputKey)
+    -- Kiểm tra key có trong danh sách không
+    for _, validKey in ipairs(allowedKeys) do
+        if inputKey == validKey then
+            return true
+        end
+    end
+    return false
 end
 
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "KeyUI"
-ScreenGui.Parent = player.PlayerGui
-ScreenGui.IgnoreGuiInset = true
-ScreenGui.ResetOnSpawn = false
+--============================================================
+-- 🟢 CHECK ACTIVATION
+--============================================================
+local activated, activeKey = isActivated()
+if activated then
+    -- Hiển thị thông tin key đang active
+    local timeLeft = activeKey.expire - now()
+    local hoursLeft = math.floor(timeLeft / 3600)
+    
+    print("✅ Key đang active:", string.sub(activeKey, 1, 8) .. "...")
+    print("⏰ Thời gian còn lại: " .. hoursLeft .. " giờ")
+    
+    -- Chạy script chính
+    task.wait(1)
+    loadstring(SCRIPT_CHINH)()
+    return
+end
 
-local Main = Instance.new("Frame")
-Main.Size = UDim2.new(0, 360, 0, 220)
-Main.Position = UDim2.fromScale(0.5, 0.5)
-Main.AnchorPoint = Vector2.new(0.5, 0.5)
-Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-Main.BackgroundTransparency = 0.15
-Main.Parent = ScreenGui
-Main.BorderSizePixel = 0
+--============================================================
+-- 🖥 KEY INPUT UI
+--============================================================
+local gui = Instance.new("ScreenGui", game.CoreGui)
 
-local UICorner = Instance.new("UICorner", Main)
-UICorner.CornerRadius = UDim.new(0, 12)
+-- BACKGROUND FRAME
+local bg = Instance.new("Frame", gui)
+bg.Size = UDim2.new(1, 0, 1, 0)
+bg.BackgroundColor3 = Color3.new(0, 0, 0)
+bg.BackgroundTransparency = 0.3
 
-local UIStroke = Instance.new("UIStroke", Main)
-UIStroke.Color = Color3.fromRGB(255,255,255)
-UIStroke.Transparency = 0.6
-UIStroke.Thickness = 1.4
+-- MAIN FRAME
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0, 380, 0, 280)
+frame.Position = UDim2.new(0.5, -190, 0.5, -140)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+frame.BorderSizePixel = 0
 
-local Title = Instance.new("TextLabel")
-Title.Size = UDim2.new(1, 0, 0, 40)
-Title.Text = "🔒 KEY SYSTEM"
-Title.Font = Enum.Font.GothamBold
-Title.TextScaled = true
-Title.BackgroundTransparency = 1
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.Parent = Main
+-- TITLE
+local title = Instance.new("TextLabel", frame)
+title.Text = "🔐 KÍCH HOẠT PREMIUM"
+title.Size = UDim2.new(1, 0, 0, 60)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
+title.TextColor3 = Color3.new(1, 1, 0.8)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 20
 
-local Close = Instance.new("TextButton")
-Close.Size = UDim2.new(0, 40, 0, 40)
-Close.Position = UDim2.new(1, -45, 0, 5)
-Close.Text = "✖"
-Close.Font = Enum.Font.GothamBold
-Close.TextScaled = true
-Close.BackgroundTransparency = 1
-Close.TextColor3 = Color3.fromRGB(255, 70, 70)
-Close.Parent = Main
+-- INFO
+local info = Instance.new("TextLabel", frame)
+info.Text = "Nhập key cố định để kích hoạt 48h"
+info.Size = UDim2.new(1, 0, 0, 30)
+info.Position = UDim2.new(0, 0, 0.22, 0)
+info.BackgroundTransparency = 1
+info.TextColor3 = Color3.fromRGB(180, 180, 180)
+info.Font = Enum.Font.Gotham
+info.TextSize = 14
 
-local TextBox = Instance.new("TextBox")
-TextBox.Size = UDim2.new(0, 300, 0, 45)
-TextBox.Position = UDim2.new(0.5, 0, 0.48, 0)
-TextBox.AnchorPoint = Vector2.new(0.5, 0.5)
-TextBox.PlaceholderText = "Nhập key..."
-TextBox.Font = Enum.Font.Gotham
-TextBox.TextScaled = true
-TextBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextBox.Parent = Main
-TextBox.BorderSizePixel = 0
-Instance.new("UICorner", TextBox).CornerRadius = UDim.new(0, 10)
+-- KEY INPUT
+local inputBox = Instance.new("TextBox", frame)
+inputBox.PlaceholderText = "Dán key vào đây..."
+inputBox.Size = UDim2.new(0.85, 0, 0, 45)
+inputBox.Position = UDim2.new(0.075, 0, 0.35, 0)
+inputBox.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+inputBox.TextColor3 = Color3.new(1, 1, 1)
+inputBox.Font = Enum.Font.Gotham
+inputBox.TextSize = 16
+inputBox.ClearTextOnFocus = false
 
-local Check = Instance.new("TextButton")
-Check.Size = UDim2.new(0, 300, 0, 45)
-Check.Position = UDim2.new(0.5, 0, 0.78, 0)
-Check.AnchorPoint = Vector2.new(0.5, 0.5)
-Check.Text = "✔ Xác nhận Key"
-Check.Font = Enum.Font.GothamBold
-Check.TextScaled = true
-Check.BackgroundColor3 = Color3.fromRGB(0, 170, 90)
-Check.TextColor3 = Color3.fromRGB(255, 255, 255)
-Check.BorderSizePixel = 0
-Check.Parent = Main
-Instance.new("UICorner", Check).CornerRadius = UDim.new(0, 10)
+-- ACTIVATE BUTTON
+local activateBtn = Instance.new("TextButton", frame)
+activateBtn.Text = "⚡ KÍCH HOẠT 48H"
+activateBtn.Size = UDim2.new(0.85, 0, 0, 45)
+activateBtn.Position = UDim2.new(0.075, 0, 0.55, 0)
+activateBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 255)
+activateBtn.TextColor3 = Color3.new(1, 1, 1)
+activateBtn.Font = Enum.Font.GothamBold
+activateBtn.TextSize = 18
 
---------------------------------------------------------------
--- NÚT THOÁT
-Close.MouseButton1Click:Connect(function()
-	ScreenGui:Destroy()
+-- KEY LIST (optional - hiện key mẫu)
+local keyList = Instance.new("TextLabel", frame)
+keyList.Text = "📋 Key mẫu: " .. allowedKeys[1]:sub(1, 8) .. "..."
+keyList.Size = UDim2.new(1, 0, 0, 25)
+keyList.Position = UDim2.new(0, 0, 0.85, 0)
+keyList.BackgroundTransparency = 1
+keyList.TextColor3 = Color3.fromRGB(120, 120, 120)
+keyList.Font = Enum.Font.Gotham
+keyList.TextSize = 12
+
+--============================================================
+-- 🔐 ACTIVATION LOGIC
+--============================================================
+activateBtn.MouseButton1Click:Connect(function()
+    local key = inputBox.Text:gsub("%s+", "")  -- Remove spaces
+    
+    if key == "" then
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "❌ Lỗi",
+            Text = "Vui lòng nhập key",
+            Duration = 3
+        })
+        return
+    end
+    
+    -- Kiểm tra key
+    if isValidKey(key) then
+        activateBtn.Text = "⏳ Đang kích hoạt..."
+        activateBtn.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+        
+        -- Lưu key
+        saveActivation(key)
+        
+        -- Thông báo thành công
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "✅ Thành công!",
+            Text = "Đã kích hoạt Premium 48h",
+            Duration = 4
+        })
+        
+        task.wait(2)
+        gui:Destroy()
+        loadstring(SCRIPT_CHINH)()
+    else
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "❌ Key sai",
+            Text = "Key không hợp lệ",
+            Duration = 3
+        })
+        
+        -- Hiệu ứng shake cho input box
+        for i = 1, 3 do
+            inputBox.BackgroundColor3 = Color3.fromRGB(80, 30, 30)
+            task.wait(0.1)
+            inputBox.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+            task.wait(0.1)
+        end
+        inputBox.Text = ""
+    end
 end)
 
---------------------------------------------------------------
--- KIỂM TRA KEY
-Check.MouseButton1Click:Connect(function()
-	local k = TextBox.Text
-	
-	if k == key1 or k == key2 then
-		saveKeyTime()  -- LƯU HẠN KEY 24H
-		
-		ScreenGui:Destroy()
-		game.StarterGui:SetCore("SendNotification", {
-			Title = "✔ Đúng Key";
-			Text = "Bạn được lưu trong 24h!";
-			Duration = 3;
-		})
-
-		-- CHẠY SCRIPT CHÍNH
-		-- loadstring(game:HttpGet("YOUR MAIN SCRIPT"))()
-
-	else
-		game.StarterGui:SetCore("SendNotification", {
-			Title = "❌ Sai Key";
-			Text = "Vui lòng kiểm tra lại!";
-			Duration = 3;
-		})
-	end
-end)
+-- Close khi click background
+bg.MouseButton1Click:Connect(function()
+    gui:Destroy()
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "⚠️ Đã hủy",
+        Text = "Cần key để sử dụng tool",
+        Duration = 3
+    })
+end);
 -- 👉 DÁN CODE CHÍNH CỦA BẠN NGAY DƯỚI DÒNG NÀY 👇
 ------------------------------------------------------
 -- ↓ TOÀN BỘ CODE CỦA BẠN (bắt đầu từ dòng: local ScreenGui = Instance.new("ScreenGui"))                                          -- ✅ MẪU CHUẨN CHO NGƯỜI MỚI | TÉO HUB 🍎
