@@ -1,0 +1,507 @@
+--============================================================
+-- 🔑 HỆ THỐNG KEY 24H – NHẬP 1 LẦN, 24H KHÔNG HỎI LẠI
+--============================================================
+
+-- KHAI BÁO SCRIPT CHÍNH (CHỈ 1 SCRIPT)
+local SCRIPT_CHINH = [[
+    -- Script chính của bạn
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/thanhdatdang87-lab/C-a-thg/refs/heads/main/ScriptTHG", true))()
+]]
+
+local allowedKeys = {"TeamTHGPremium", "TeamTHGPremium "}   -- 2 key hợp lệ
+local saveFile = "key_24h.txt"         -- file lưu thời gian
+
+local function now()
+    return os.time()
+end
+
+-- Lưu 24 giờ
+local function saveKey()
+    writefile(saveFile, tostring(now() + 24*3600))
+end
+
+-- Kiểm tra file key
+local function isKeyStillValid()
+    if not isfile(saveFile) then
+        return false
+    end
+
+    local t = tonumber(readfile(saveFile))
+    return t and t >= now()
+end
+
+--============================================================
+-- ⚡ NẾU ĐANG TRONG 24H → CHẠY SCRIPT CHÍNH LIỀN
+--============================================================
+
+if isKeyStillValid() then
+    print("✅ Key còn hạn → chạy script chính luôn")
+    local success, errorMsg = pcall(function()
+        loadstring(SCRIPT_CHINH)()
+    end)
+    if not success then
+        warn("Lỗi khi chạy script: " .. tostring(errorMsg))
+    end
+    return
+end
+
+--============================================================
+-- 🖥️ UI NHẬP KEY
+--============================================================
+
+local coreGui = game:GetService("CoreGui")
+local gui = Instance.new("ScreenGui")
+gui.Name = "KeySystem24H"
+gui.Parent = coreGui
+gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+gui.ResetOnSpawn = false
+
+local frame = Instance.new("Frame", gui)
+frame.Size = UDim2.new(0, 320, 0, 200)
+frame.Position = UDim2.new(0.5, -160, 0.5, -100)
+frame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+frame.BorderSizePixel = 0
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 10)
+corner.Parent = frame
+
+-- Tiêu đề
+local title = Instance.new("TextLabel", frame)
+title.Text = "🔑 HỆ THỐNG KEY 24H"
+title.Size = UDim2.new(1, 0, 0, 40)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundTransparency = 1
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 20
+
+-- Box nhập key
+local box = Instance.new("TextBox", frame)
+box.PlaceholderText = "Nhập key..."
+box.Size = UDim2.new(0.8, 0, 0, 40)
+box.Position = UDim2.new(0.1, 0, 0.3, 0)
+box.BackgroundColor3 = Color3.fromRGB(45, 45, 55)
+box.TextColor3 = Color3.new(1, 1, 1)
+box.Font = Enum.Font.Gotham
+box.TextSize = 16
+box.ClearTextOnFocus = false
+
+local boxCorner = Instance.new("UICorner")
+boxCorner.CornerRadius = UDim.new(0, 8)
+boxCorner.Parent = box
+
+-- Nút xác nhận
+local check = Instance.new("TextButton", frame)
+check.Text = "XÁC NHẬN"
+check.Size = UDim2.new(0.8, 0, 0, 45)
+check.Position = UDim2.new(0.1, 0, 0.6, 0)
+check.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+check.TextColor3 = Color3.new(1, 1, 1)
+check.Font = Enum.Font.GothamBold
+check.TextSize = 18
+check.AutoButtonColor = true
+
+local btnCorner = Instance.new("UICorner")
+btnCorner.CornerRadius = UDim.new(0, 8)
+btnCorner.Parent = check
+
+-- Thông báo
+local info = Instance.new("TextLabel", frame)
+info.Text = "Key hợp lệ: TeamTHGPremium2024 hoặc THG_VIP_Key"
+info.Size = UDim2.new(1, 0, 0, 30)
+info.Position = UDim2.new(0, 0, 0.85, 0)
+info.BackgroundTransparency = 1
+info.TextColor3 = Color3.fromRGB(200, 200, 200)
+info.Font = Enum.Font.Gotham
+info.TextSize = 12
+
+--============================================================
+-- ✅ CHECK KEY
+--============================================================
+
+local function isValid(k)
+    k = string.gsub(k, "%s+$", "")  -- Xóa khoảng trắng thừa
+    for _, v in ipairs(allowedKeys) do
+        if k == v then
+            return true
+        end
+    end
+    return false
+end
+
+check.MouseButton1Click:Connect(function()
+    local key = box.Text
+    if isValid(key) then
+        -- Lưu key
+        saveKey()
+        
+        -- Hiệu ứng nút
+        check.Text = "✅ THÀNH CÔNG"
+        check.BackgroundColor3 = Color3.fromRGB(0, 200, 100)
+        
+        -- Thông báo
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "THÀNH CÔNG",
+            Text = "Key hợp lệ! Script sẽ chạy trong 24h",
+            Duration = 3,
+            Icon = "rbxassetid://4483345998"
+        })
+        
+        -- Đóng GUI sau 1 giây
+        task.wait(1)
+        gui:Destroy()
+        
+        -- Chạy script chính
+        local success, errorMsg = pcall(function()
+            loadstring(SCRIPT_CHINH)()
+        end)
+        
+        if not success then
+            warn("Lỗi khi chạy script chính: " .. tostring(errorMsg))
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "LỖI",
+                Text = "Không thể tải script chính",
+                Duration = 5
+            })
+        end
+    else
+        -- Hiệu ứng lỗi
+        check.Text = "❌ SAI KEY"
+        check.BackgroundColor3 = Color3.fromRGB(255, 80, 80)
+        
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "LỖI",
+            Text = "Key không đúng! Vui lòng thử lại",
+            Duration = 3,
+            Icon = "rbxassetid://4483345998"
+        })
+        
+        -- Reset nút sau 1 giây
+        task.wait(1)
+        check.Text = "XÁC NHẬN"
+        check.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+        box.Text = ""
+    end
+end)
+
+-- Cho phép nhấn Enter để xác nhận
+box.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+        check.MouseButton1Click:Connect()
+    end
+end)
+
+--============================================================
+-- 🎮 SCRIPT CHÍNH - HUB GAME
+--============================================================
+
+-- Chờ game load
+repeat task.wait() until game:IsLoaded()
+
+-- Nút mở menu chính
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Name = "MainHubUI"
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.02, 0, 0.4, 0)
+ImageButton.Size = UDim2.new(0, 50, 0, 50)
+ImageButton.Draggable = true
+ImageButton.Image = "http://www.roblox.com/asset/?id=120909377603186"
+
+UICorner.CornerRadius = UDim.new(1, 10)
+UICorner.Parent = ImageButton
+
+-- Giao diện Fluent
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+
+-- Cửa sổ chính
+local Window = Fluent:CreateWindow({
+    Title = "Team THG Hub",
+    SubTitle = "Premium Script Collection",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(500, 350),
+    Acrylic = true,
+    Theme = "Amethyst",
+    MinimizeKey = Enum.KeyCode.End
+})
+
+-- Các tab
+local Tabs = {
+    Main0 = Window:AddTab({ Title = "📢 Thông Tin" }),
+    Main1 = Window:AddTab({ Title = "🍎 Blox Fruits" }),
+    Main2 = Window:AddTab({ Title = "🧠 Steal A Brain" }),
+    Main3 = Window:AddTab({ Title = "🌳 99 Đêm Trong Rừng" }),
+    Main4 = Window:AddTab({ Title = "🌻 Garden Defense" }),
+    Main5 = Window:AddTab({ Title = "🌿 Plant vs Brainrot" })
+}
+
+------------------------------------------------
+-- TAB 1: Thông tin & Liên hệ
+------------------------------------------------
+
+Tabs.Main0:AddParagraph({
+    Title = "Thông Báo Update",
+    Content = "Ngày 27/11: Đã thêm script Blox Fruits mới, cập nhật các script hiện có."
+})
+
+Tabs.Main0:AddButton({
+    Title = "📱 TikTok Chính",
+    Description = "Kênh cập nhật game & script",
+    Callback = function()
+        setclipboard("https://www.tiktok.com/@tng.hp.game.28")
+        Fluent:Notify({
+            Title = "Đã copy",
+            Content = "Link TikTok đã được sao chép",
+            Duration = 3
+        })
+    end
+})
+
+Tabs.Main0:AddButton({
+    Title = "📱 TikTok Game Tổng Hợp",
+    Description = "Kênh tổng hợp game",
+    Callback = function()
+        setclipboard("https://www.tiktok.com/@tng.hp.game.28")
+        Fluent:Notify({
+            Title = "Đã copy",
+            Content = "Link TikTok đã được sao chép",
+            Duration = 3
+        })
+    end
+})
+
+Tabs.Main0:AddButton({
+    Title = "🎥 YouTube",
+    Description = "Kênh YouTube chính thức",
+    Callback = function()
+        setclipboard("https://www.youtube.com/@T%E1%BB%95ngH%E1%BB%A3pgame2-v4i")
+        Fluent:Notify({
+            Title = "Đã copy",
+            Content = "Link YouTube đã được sao chép",
+            Duration = 3
+        })
+    end
+})
+
+Tabs.Main0:AddButton({
+    Title = "💬 Discord",
+    Description = "Coming Soon",
+    Callback = function()
+        Fluent:Notify({
+            Title = "Thông báo",
+            Content = "Discord sẽ ra mắt sớm!",
+            Duration = 3
+        })
+    end
+})
+
+------------------------------------------------
+-- TAB 2: Blox Fruits Scripts
+------------------------------------------------
+
+Tabs.Main1:AddParagraph({
+    Title = "Chọn Script",
+    Content = "Các script Blox Fruits tốt nhất"
+})
+
+Tabs.Main1:AddButton({
+    Title = "Gravity Hub",
+    Description = "Script load nhanh, ổn định",
+    Callback = function()
+        getgenv().Settings = {
+            JoinTeam = true,
+            Team = "Pirates",
+            Translator = true
+        }
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"))()
+    end
+})
+
+Tabs.Main1:AddButton({
+    Title = "Teddy Hub Farm",
+    Description = "Giao diện đẹp, farm hiệu quả",
+    Callback = function()
+        repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TeddyHub.lua"))()
+    end
+})
+
+Tabs.Main1:AddButton({
+    Title = "Xeter Hub",
+    Description = "Script mạnh, nhiều tính năng",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))()
+    end
+})
+
+Tabs.Main1:AddButton({
+    Title = "Hiru Hub",
+    Description = "Script ổn định, dễ sử dụng",
+    Callback = function()
+        getgenv().Settings = {
+            JoinTeam = true,
+            Team = "Marines"
+        }
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/KiddoHiru/BloxFruits/main/Source.lua"))()
+    end
+})
+
+Tabs.Main1:AddButton({
+    Title = "Redz Hub (Fake)",
+    Description = "Phiên bản free của Redz",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/luraobermeyer-jpg/redzhub/refs/heads/main/redzhub.lua.txt"))()
+    end
+})
+
+Tabs.Main1:AddButton({
+    Title = "Tsuo Hub",
+    Description = "Có tính năng gambling",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Tsuo7/TsuoHub/main/Tsuoscripts"))()
+    end
+})
+
+------------------------------------------------
+-- TAB 3: Steal A Brain Scripts
+------------------------------------------------
+
+Tabs.Main2:AddParagraph({
+    Title = "Steal A Brain Scripts",
+    Content = "Các script cho game Steal A Brain"
+})
+
+Tabs.Main2:AddButton({
+    Title = "VietNam Hub",
+    Description = "Script ổn định cho Steal A Brain",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/replit8173/VietnamHub/refs/heads/main/VietnamseHub.lua", true))()
+    end
+})
+
+Tabs.Main2:AddButton({
+    Title = "Chilli Hub",
+    Description = "Script mới cập nhật",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a3e13a4a85ac4c2da17a6baab051ee1b.lua"))()
+    end
+})
+
+Tabs.Main2:AddButton({
+    Title = "Youi Hub",
+    Description = "Instant Steal V2",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Youifpg/Steal-a-Brianrot/refs/heads/main/Instant%20Steal%20V2.lua"))()
+    end
+})
+
+------------------------------------------------
+-- TAB 4: 99 Đêm Trong Rừng
+------------------------------------------------
+
+Tabs.Main3:AddParagraph({
+    Title = "99 Đêm Trong Rừng",
+    Content = "Script cho game sinh tồn"
+})
+
+Tabs.Main3:AddButton({
+    Title = "FoxName Hub",
+    Description = "Script ổn định, dễ dùng",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))()
+    end
+})
+
+Tabs.Main3:AddButton({
+    Title = "RingTa Hub",
+    Description = "Script farm hiệu quả",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/99daysloader.github.io/refs/heads/main/ringta.lua"))()
+    end
+})
+
+Tabs.Main3:AddButton({
+    Title = "VoidWare",
+    Description = "Script cao cấp",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))()
+    end
+})
+
+------------------------------------------------
+-- TAB 5: Garden Tower Defense
+------------------------------------------------
+
+Tabs.Main4:AddParagraph({
+    Title = "Garden Tower Defense",
+    Content = "Script cho game phòng thủ"
+})
+
+Tabs.Main4:AddButton({
+    Title = "Shadow Hub",
+    Description = "Cần key, script ngon",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/RilShadow10/ShadowHub/master/loader.lua"))()
+    end
+})
+
+Tabs.Main4:AddButton({
+    Title = "Infinite Yield",
+    Description = "Admin commands cơ bản",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end
+})
+
+------------------------------------------------
+-- TAB 6: Plant vs Brainrot
+------------------------------------------------
+
+Tabs.Main5:AddParagraph({
+    Title = "Plant vs Brainrot",
+    Content = "Script cho game chiến thuật"
+})
+
+Tabs.Main5:AddButton({
+    Title = "Speed Hub",
+    Description = "Script farm nhanh",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+    end
+})
+
+Tabs.Main5:AddButton({
+    Title = "KhanhLy Hub",
+    Description = "Script dành riêng cho game",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/khoavipok/Khanhlytbao/refs/heads/main/Plants%20Vs%20Brainrots"))()
+    end
+})
+
+-- Kết nối nút mở menu
+ImageButton.MouseButton1Click:Connect(function()
+    Window:SelectTab(1)
+    Fluent:Notify({
+        Title = "Team THG Hub",
+        Content = "Menu đã được mở!",
+        Duration = 3
+    })
+end)
+
+-- Thông báo khởi động
+task.wait(1)
+Fluent:Notify({
+    Title = "Chào mừng!",
+    Content = "Team THG Hub đã sẵn sàng. Nhấn nút tròn để mở menu!",
+    Duration = 5
+})
+
+print("✅ Team THG Hub đã load thành công!")
