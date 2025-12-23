@@ -152,7 +152,7 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update script và thông tin lật vật",              -- 👈 tên nút
-	Description = "(ngày 24 tháng 12) đã thêm 2 script bloxfruit đấy sướng nhá👍",-- 👈 mô tả nút
+	Description = "(ngày 24 tháng 12) đã thêm 1 script bloxfruit đấy sướng nhá👍",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("đã là bảng tin thì k có link đou")  -- 👈 link sao chép
 	end
@@ -211,126 +211,14 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Teddyseetink/Haidepza
 ))
 
 Tabs.Main1:AddButton({
-	Title = "Script SkullHub",                             -- 👈 tên nút hiển thị
-	Description = "script này chuyên nhặt trái mà k tự động bật script đc nên tự mà sài",-- 👈 mô tả
+	Title = "RedzHub Hub",                             -- 👈 tên nút hiển thị
+	Description = "Script này na ná 80% th nên đừng mong chờ j nhiều",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
-		_G.Settings = {
-
- 
-
-    ["Start Farm"] = true,
-
- 
-
-    ["Choose Team"] = "Marines",
-
- 
-
-    ["Store Fruit"] = true,
-
- 
-
-    ["Bypass TP"] = false,
-
- 
-
-    ["Next Server Time"] = 20,
-
- 
-
-    ["Chat Settings"] = {
-
- 
-
-        ["Enable"] = false,
-
- 
-
-        ["Messages"] = {
-
- 
-
-            "Wow! I found a legendary fruit when I used the Skull Hub",
-
- 
-
-            "Search Y T SKULL HUB"
-
- 
-
-        },
-
- 
-
-        ["Chat Delay"] = 5
-
- 
-
-    },
-
- 
-
-    ["Webhook Settings"] = {
-
- 
-
-        ["Enable"] = true,
-
- 
-
-        ["Link"] = "",
-
- 
-
-        ["Mention"] = "@",
-
- 
-
-        ["SendTimes"] = 1,
-
- 
-
-        ["Interval"] = 1
-
- 
-
-    }
-
- 
-
-}
-
- 
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/xxhumggxx/SkullHub/refs/heads/main/FruitCollect.lua"))()
-	end
-))
-
-Tabs.Main1:AddButton({
-	Title = "XeterHub",                             -- 👈 tên nút hiển thị
-	Description = "Script này ngon ngang redz nhá =))",-- 👈 mô tả
-	Callback = function()
-		local Settings = {
-			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
-			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
-		}
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))()
-	end
-})
-
-Tabs.Main1:AddButton({
-	Title = "RedzHubFake",                             -- 👈 tên nút hiển thị
-	Description = "Script na ná thôi đừng mong chờ j nhiều =))) nhma giống tới 80% lận nhá",-- 👈 mô tả
-	Callback = function()
-		local Settings = {
-			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
-			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
-		}
-		loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/20f318386e3fbf069ee3fa797cfc9f34.lua"))()
+		loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/85e904ae1ff30824c1aa007fc7324f8f.lua"))()
 	end
 })
 
