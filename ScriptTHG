@@ -152,7 +152,7 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update script và thông tin lật vật",              -- 👈 tên nút
-	Description = "(ngày 23 tháng 12) đã thêm 1 script bloxfruit,thông cảm đê",-- 👈 mô tả nút
+	Description = "(ngày 24 tháng 12) đã thêm 2 script bloxfruit đấy sướng nhá👍",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("đã là bảng tin thì k có link đou")  -- 👈 link sao chép
 	end
@@ -208,7 +208,107 @@ Tabs.Main1:AddButton({
 		repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TeddyHub.lua"))()
 	end
-})
+))
+
+Tabs.Main1:AddButton({
+	Title = "Script SkullHub",                             -- 👈 tên nút hiển thị
+	Description = "script này chuyên nhặt trái mà k tự động bật script đc nên tự mà sài",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		_G.Settings = {
+
+ 
+
+    ["Start Farm"] = true,
+
+ 
+
+    ["Choose Team"] = "Marines",
+
+ 
+
+    ["Store Fruit"] = true,
+
+ 
+
+    ["Bypass TP"] = false,
+
+ 
+
+    ["Next Server Time"] = 20,
+
+ 
+
+    ["Chat Settings"] = {
+
+ 
+
+        ["Enable"] = false,
+
+ 
+
+        ["Messages"] = {
+
+ 
+
+            "Wow! I found a legendary fruit when I used the Skull Hub",
+
+ 
+
+            "Search Y T SKULL HUB"
+
+ 
+
+        },
+
+ 
+
+        ["Chat Delay"] = 5
+
+ 
+
+    },
+
+ 
+
+    ["Webhook Settings"] = {
+
+ 
+
+        ["Enable"] = true,
+
+ 
+
+        ["Link"] = "",
+
+ 
+
+        ["Mention"] = "@",
+
+ 
+
+        ["SendTimes"] = 1,
+
+ 
+
+        ["Interval"] = 1
+
+ 
+
+    }
+
+ 
+
+}
+
+ 
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xxhumggxx/SkullHub/refs/heads/main/FruitCollect.lua"))()
+	end
+))
 
 Tabs.Main1:AddButton({
 	Title = "XeterHub",                             -- 👈 tên nút hiển thị
@@ -243,6 +343,19 @@ Tabs.Main1:AddButton({
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		getgenv().Team = "Marines" loadstring(game:HttpGet("https://raw.githubusercontent.com/longdwieh/HoangLong-script/refs/heads/main/HoangLongHub.lua.txt"))()
+	end
+})
+
+Tabs.Main1:AddButton({
+	Title = "RiseEvoHub",                             -- 👈 tên nút hiển thị
+	Description = "Script này cx đc nhma giao diện cực khác =)) sài cx ổn",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		getgenv().Team = "Pirates" --Marines, Pirates
+loadstring(game:HttpGet('https://raw.githubusercontent.com/TrashLua/BloxFruits/main/loadder.lua'))()
 	end
 })
 
@@ -483,15 +596,13 @@ loadstring(game:HttpGet("https://github.com/LuaCrack/Zis/raw/refs/heads/main/Zis
 
 Tabs.Main1:AddButton({
 	Title = "Script BananaPreFake",                             -- 👈 tên nút hiển thị
-	Description = "tất cả cx ổn mà sea event chx test=)) ",-- 👈 mô tả
+	Description = "tất cả cx ổn mà sea event chx test=))",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
-		repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-getgenv().Key = "F4hb2akdkGhBb8P34QtRe7K43Fj"
-loadstring(game:HttpGet("https://raw.githubusercontent.com/hnc-roblox/Obii_HNCRobloxYeuEm.vthangsitink-/refs/heads/main/BananaCatHub.lua"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/kimprobloxdz/Banana-Free/refs/heads/main/Protected_5609200582002947.lua.txt"))()
 	end
 })
 
