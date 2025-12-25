@@ -152,7 +152,7 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
 	Title = "Bảng tin update script và thông tin lật vật",              -- 👈 tên nút
-	Description = "(ngày 24 tháng 12) Script Banana and Gravity Fixed",-- 👈 mô tả nút
+	Description = "(ngày 25 tháng 12) "đã fix xong nên sài lại đi",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("đã là bảng tin thì k có link đou")  -- 👈 link sao chép
 	end
