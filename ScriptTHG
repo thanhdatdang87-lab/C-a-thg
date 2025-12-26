@@ -178,7 +178,7 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
     Title = "Bảng tin update script và thông tin lặt vặt",
-    Description = "(ngày 24 tháng 12) Script Banana and Gravity Fixed, +1 script bloxfruit",
+    Description = "(ngày 24 tháng 12) Script Banana and Gravity Fixed,+1 script bloxfruit",
     Callback = function()
         if setclipboard then
             setclipboard("đã là bảng tin thì k có link đou")
