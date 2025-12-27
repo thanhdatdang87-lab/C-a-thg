@@ -109,6 +109,22 @@ repeat task.wait() until keyOk == true
 -- 🚀 DÁN CODE CHÍNH CỦA BẠN NGAY DƯỚI DÒNG NÀY 🚀
 ------------------------------------------------------
 
+-- 🔧 HÀM HIỂN THỊ THÔNG BÁO KHI BẬT SCRIPT
+local function showScriptNotification(scriptName)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Đã khởi động script 🚀",
+        Text = "Script: " .. scriptName,
+        Duration = 3,
+        Icon = "rbxassetid://4458901886"
+    })
+    
+    -- In ra console
+    print("=====================================")
+    print("✅ Script đã khởi động: " .. scriptName)
+    print("⏰ Thời gian: " .. os.date("%H:%M:%S"))
+    print("=====================================")
+end
+
 repeat task.wait() until game:IsLoaded()
 
 -- 🔢 Nút mở menu chính
@@ -126,7 +142,7 @@ ImageButton.BorderSizePixel = 0
 ImageButton.Position = UDim2.new(0.10615778, 0, 0.16217947, 0)
 ImageButton.Size = UDim2.new(0, 40, 0, 40)
 ImageButton.Draggable = true
-ImageButton.Image = "http://www.roblox.com/asset/?id=120909377603186"  -- 🎨 đổi ID ảnh nút mở menu tại đây (ảnh roblox)
+ImageButton.Image = "http://www.roblox.com/asset/?id=120909377603186"
 
 UICorner5.CornerRadius = UDim.new(1, 10)
 UICorner5.Parent = ImageButton
@@ -153,19 +169,19 @@ repeat wait() until game:IsLoaded()
 
 -- 🪟 Cửa sổ chính
 local Window = Fluent:CreateWindow({
-    Title = "Team THG",         -- 🎨 đổi thành tên script của bạn
-    SubTitle = "ScriptPremium", -- 🎨 đổi mô tả phụ
+    Title = "Team THG",
+    SubTitle = "ScriptPremium",
     TabWidth = 157,
     Size = UDim2.fromOffset(450, 300),
     Acrylic = true,
-    Theme = "Amethyst",         -- 🎨 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
+    Theme = "Amethyst",
     MinimizeKey = Enum.KeyCode.End
 })
 
 -- 🔖 Các tab (mục chính)
 local Tabs = {
-    Main0 = Window:AddTab({ Title = "Main🗒️" }),
-    Main1 = Window:AddTab({ Title = "BloxFruit⚔️" }),
+    Main0 = Window:AddTab({ Title = "Main⬅️" }),
+    Main1 = Window:AddTab({ Title = "BloxFruit⚜️" }),
     Main2 = Window:AddTab({ Title = "StealABrainGod🐘" }),
     Main3 = Window:AddTab({ Title = "99 Đêm Trong Rừng🌲" }),
     Main4 = Window:AddTab({ Title = "GardenTowerDefense🌻" }),
@@ -178,7 +194,7 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
     Title = "Bảng tin update script và thông tin lặt vặt",
-    Description = "(ngày 24 tháng 12) Script Banana and Gravity Fixed,+1 script bloxfruit",
+    Description = "(ngày 24 tháng 12) Script Banana and Gravity Fixed",
     Callback = function()
         if setclipboard then
             setclipboard("đã là bảng tin thì k có link đou")
@@ -217,12 +233,15 @@ Tabs.Main0:AddButton({
 })
 
 ------------------------------------------------
--- TAB 2: Ví dụ thêm script
+-- TAB 2: Script Blox Fruit với thông báo
 ------------------------------------------------
 Tabs.Main1:AddButton({
     Title = "GravityHub",
     Description = "Script này ngon load nhanh hơn nhiều rồi",
     Callback = function()
+        local scriptName = "GravityHub"
+        showScriptNotification(scriptName)
+        
         local Settings = {
             JoinTeam = "Pirates",
             Translator = true
@@ -235,6 +254,9 @@ Tabs.Main1:AddButton({
     Title = "Script TeddyHubFarm",
     Description = "script này có giao diện giống tới 80-90% banana nhma hạng free thì sao mà bằng đc v là ngon lắm r",
     Callback = function()
+        local scriptName = "TeddyHubFarm"
+        showScriptNotification(scriptName)
+        
         local Settings = {
             JoinTeam = "Pirates",
             Translator = true
@@ -248,6 +270,9 @@ Tabs.Main1:AddButton({
     Title = "HoangLongHub",
     Description = "Script này k biết ngon không nhma giao diện giống mà khác tính năng với màu của banana hub premium",
     Callback = function()
+        local scriptName = "HoangLongHub"
+        showScriptNotification(scriptName)
+        
         getgenv().Team = "Marines"
         loadstring(game:HttpGet("https://raw.githubusercontent.com/longdwieh/HoangLong-script/refs/heads/main/HoangLongHub.lua.txt"))()
     end
@@ -257,6 +282,9 @@ Tabs.Main1:AddButton({
     Title = "AryaHubKaitun",
     Description = "Không có sài kaitun nhiều nên tự mà trải nghiệm",
     Callback = function()
+        local scriptName = "AryaHubKaitun"
+        showScriptNotification(scriptName)
+        
         Config = {
             Team = "Pirates",
             Configuration = {
@@ -285,6 +313,9 @@ Tabs.Main1:AddButton({
     Title = "HiruHub",
     Description = "Script này cũng ổn nhma tùy=)))",
     Callback = function()
+        local scriptName = "HiruHub"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -297,6 +328,9 @@ Tabs.Main1:AddButton({
     Title = "W-azure",
     Description = "Script này này ngon nhá=)",
     Callback = function()
+        local scriptName = "W-azure Hub"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -306,22 +340,12 @@ Tabs.Main1:AddButton({
 })
 
 Tabs.Main1:AddButton({
-    Title = "RiseEvoHub",
-    Description = "Script này thì cx chả nhớ cái j đâu nên tự mà kiểm tra nhá",
-    Callback = function()
-        getgenv().Settings = {
-            JoinTeam = true,
-            Team = "Marines"
-        }
-        getgenv().Team = "Pirates" --Marines, Pirates
-loadstring(game:HttpGet('https://raw.githubusercontent.com/TrashLua/BloxFruits/main/loadder.lua'))()
-    end
-})
-
-Tabs.Main1:AddButton({
     Title = "BlueXHub",
     Description = "Script này sẵn sea event mà tìm thì khó ",
     Callback = function()
+        local scriptName = "BlueXHub"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))()
     end
 })
@@ -330,6 +354,9 @@ Tabs.Main1:AddButton({
     Title = "Script Ngọc Bổng",
     Description = "Script Farm cày boss elite ngon ",
     Callback = function()
+        local scriptName = "Ngọc Bổng Hub"
+        showScriptNotification(scriptName)
+        
         getgenv().Team = "Marines"
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ngocbonggaming/script/refs/heads/main/NgocBongVn.lua"))()
     end
@@ -339,6 +366,9 @@ Tabs.Main1:AddButton({
     Title = "GodHub",
     Description = "Script này thì na ná script RedzHub fake thui cx ổn",
     Callback = function()
+        local scriptName = "GodHub"
+        showScriptNotification(scriptName)
+        
         repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
         loadstring(game:HttpGet("https://raw.githubusercontent.com/shinichi-dz/phucshinsayhi/refs/heads/main/Loader.lua"))()
     end
@@ -348,6 +378,9 @@ Tabs.Main1:AddButton({
     Title = "MaruHubPreFake",
     Description = "Script MaruHubPreFake sài tạm ổn",
     Callback = function()
+        local scriptName = "MaruHub Premium Fake"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/hnc-roblox/Free/refs/heads/main/MaruHubPremiumFake.HNC%20Roblox.lua"))()
     end
 })
@@ -356,6 +389,9 @@ Tabs.Main1:AddButton({
     Title = "Script DatThgV1",
     Description = "Script này k phải của tui nhá mà là của idol khác",
     Callback = function()
+        local scriptName = "DatThg V1"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/DatThg/refs/heads/main/DatThgV1"))()
     end
 })
@@ -364,6 +400,9 @@ Tabs.Main1:AddButton({
     Title = "Script MinV27",
     Description = "Nền xanh lá sài cx ổn👍 ",
     Callback = function()
+        local scriptName = "Min V27"
+        showScriptNotification(scriptName)
+        
         getgenv().Team = "Marines"
         loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/Min/refs/heads/main/MinUp27Vn"))()
     end
@@ -373,6 +412,9 @@ Tabs.Main1:AddButton({
     Title = "VxezeHub",
     Description = "Script này chx test sâu cho lắm nên k bt",
     Callback = function()
+        local scriptName = "VxezeHub"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/refs/heads/main/VxezeHubMain"))()
     end
 })
@@ -381,6 +423,9 @@ Tabs.Main1:AddButton({
     Title = "RedzHub",
     Description = "Script Fake Redz mà sài cx ngon lắm à nhá",
     Callback = function()
+        local scriptName = "RedzHub (Fake)"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/luraobermeyer-jpg/redzhub/refs/heads/main/redzhub.lua.txt"))()
     end
 })
@@ -389,6 +434,9 @@ Tabs.Main1:AddButton({
     Title = "Script Tsuo",
     Description = "Script Gambling ý là cái menu nó sẽ ra á",
     Callback = function()
+        local scriptName = "Tsuo Script"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Tsuo7/TsuoHub/main/Tsuoscripts"))()
     end
 })
@@ -397,6 +445,9 @@ Tabs.Main1:AddButton({
     Title = "OMGHub",
     Description = "Script cx ổn nhma CẦN KEY NHÁ nhớ nhá",
     Callback = function()
+        local scriptName = "OMGHub"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/479e9f38148118df2d14fc0795ece576.lua"))()
     end
 })
@@ -405,6 +456,9 @@ Tabs.Main1:AddButton({
     Title = "TrẩuV3Hub",
     Description = "Script này thì khỏi nói rầu",
     Callback = function()
+        local scriptName = "Trẩu V3 Hub"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/traurobloxdeptrai/traukhoaito/refs/heads/main/traurobloxv3.lua"))()
     end
 })
@@ -413,6 +467,9 @@ Tabs.Main1:AddButton({
     Title = "SpeedHubV5",
     Description = "Script này giao diện sẽ k quen mấy nhma sài cx ổn",
     Callback = function()
+        local scriptName = "SpeedHub V5"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -425,6 +482,9 @@ Tabs.Main1:AddButton({
     Title = "ZisHub",
     Description = "Script này farm cx đc",
     Callback = function()
+        local scriptName = "ZisHub"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -437,6 +497,9 @@ Tabs.Main1:AddButton({
     Title = "Script BananaPreFake",
     Description = "tất cả cx ổn mà sea event chx test=))",
     Callback = function()
+        local scriptName = "Banana Premium Fake"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/kimprobloxdz/Banana-Free/refs/heads/main/Protected_5609200582002947.lua.txt"))()
     end
 })
@@ -445,6 +508,9 @@ Tabs.Main1:AddButton({
     Title = "Script TeddyHub",
     Description = "tự mà get key ko muốn ib a lấy key=))",
     Callback = function()
+        local scriptName = "TeddyHub Free"
+        showScriptNotification(scriptName)
+        
         repeat task.wait() until game:IsLoaded() and game:GetService("Players") and game.Players.LocalPlayer and game.Players.LocalPlayer:FindFirstChild("PlayerGui")
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TEDDYHUB-FREEMIUM"))()
     end
@@ -454,6 +520,9 @@ Tabs.Main1:AddButton({
     Title = "Script MeowHub",
     Description = "áp dụng với mấy game khác dùng để tìm SV ít người",
     Callback = function()
+        local scriptName = "MeowHub"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/anuragaming1/Meow_gaming/refs/heads/main/Servervip.lua.txt"))()
     end
 })
@@ -462,6 +531,9 @@ Tabs.Main1:AddButton({
     Title = "Script Yiner",
     Description = "Script này nghe nói là auto bounty mà hok sài đủ lâu nên k bic",
     Callback = function()
+        local scriptName = "Yiner Script"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/anuragaming1/Meow_gaming/refs/heads/main/Servervip.lua.txt"))()
     end
 })
@@ -470,6 +542,9 @@ Tabs.Main1:AddButton({
     Title = "Script blueXHub",
     Description = "Script này là hàng colab giữa admin blue với Redz real nên hơi khác nhma rất ngon nhé",
     Callback = function()
+        local scriptName = "blueXHub Colab"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/anuragaming1/Meow_gaming/refs/heads/main/Servervip.lua.txt"))()
     end
 })
@@ -478,6 +553,9 @@ Tabs.Main1:AddButton({
     Title = "Script MaruHubFreemium",
     Description = " thấy Sài thì kém sang hơn pre nhma sài ngon hơn=)) ",
     Callback = function()
+        local scriptName = "MaruHub Freemium"
+        showScriptNotification(scriptName)
+        
         getgenv().Team = "Marines"
         loadstring(game:HttpGet("https://raw.githubusercontent.com/natoppo044/GGEZ/refs/heads/main/MaruHub.lua"))()
     end
@@ -487,6 +565,9 @@ Tabs.Main1:AddButton({
     Title = "Script MasterHub(DoraemonHub)",
     Description = "Sài tạm tạm ngon hay k tùy người ",
     Callback = function()
+        local scriptName = "MasterHub (DoraemonHub)"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/anuragaming1/Meow_gaming/refs/heads/main/Servervip.lua.txt"))()
     end
 })
@@ -495,6 +576,9 @@ Tabs.Main1:AddButton({
     Title = "Script DatThgV1",
     Description = " Script này k phải là script của tui nhá",
     Callback = function()
+        local scriptName = "DatThg V1 (Duplicate)"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/DatThg/refs/heads/main/DatThgV1"))()
     end
 })
@@ -503,6 +587,9 @@ Tabs.Main1:AddButton({
     Title = "Script TsuoHub",
     Description = "script này tùy hứng lắm",
     Callback = function()
+        local scriptName = "TsuoHub"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Tsuo7/TsuoHub/main/Tsuoscripts"))()
     end
 })
@@ -511,14 +598,23 @@ Tabs.Main1:AddButton({
     Title = "Script QuanTumOnyx",
     Description = " Script này cái cx ngon trừ seaevent ra=))",
     Callback = function()
+        local scriptName = "Quantum Onyx"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))()
     end
 })
 
+------------------------------------------------
+-- TAB 3: Script StealABrainGod với thông báo
+------------------------------------------------
 Tabs.Main2:AddButton({
     Title = "VietNamHub",
     Description = "Script này cx đc tại k chs steal nhiều nên tự trải nghiệm",
     Callback = function()
+        local scriptName = "VietNam Hub (StealABrainGod)"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -531,6 +627,9 @@ Tabs.Main2:AddButton({
     Title = "ChilliHub",
     Description = "Script này cx đc tại k chs steal nhiều nên tự trải nghiệm",
     Callback = function()
+        local scriptName = "ChilliHub (StealABrainGod)"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -543,6 +642,9 @@ Tabs.Main2:AddButton({
     Title = "YouiHub",
     Description = "Script này cx đc tại k chs steal nhiều nên tự trải nghiệm",
     Callback = function()
+        local scriptName = "YouiHub (StealABrainGod)"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -551,10 +653,16 @@ Tabs.Main2:AddButton({
     end
 })
 
+------------------------------------------------
+-- TAB 4: Script 99 Đêm Trong Rừng với thông báo
+------------------------------------------------
 Tabs.Main3:AddButton({
     Title = "Script FoxNameHub",
     Description = " ổn dùng ổn định k quá rồi good",
     Callback = function()
+        local scriptName = "FoxNameHub (99 Đêm Trong Rừng)"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))()
     end
 })
@@ -563,6 +671,9 @@ Tabs.Main3:AddButton({
     Title = "Script RingTaHub",
     Description = "cx ổn=))",
     Callback = function()
+        local scriptName = "RingTaHub (99 Đêm Trong Rừng)"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/wefwef127382/99daysloader.github.io/refs/heads/main/ringta.lua"))()
     end
 })
@@ -571,6 +682,9 @@ Tabs.Main3:AddButton({
     Title = "Script GecHub",
     Description = " tự sài mà cảm nhận đi ai rảnh mà nói hoài ",
     Callback = function()
+        local scriptName = "GecHub (99 Đêm Trong Rừng)"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/GEC0/gec/refs/heads/main/Gec.Loader", true))()
     end
 })
@@ -579,6 +693,9 @@ Tabs.Main3:AddButton({
     Title = "Script VoidWare",
     Description = "Script xịn nha",
     Callback = function()
+        local scriptName = "VoidWare (99 Đêm Trong Rừng)"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -591,14 +708,23 @@ Tabs.Main3:AddButton({
     Title = "Script TeuHub",
     Description = "Script của bạn tếu mới làm nên k xịn lắm ",
     Callback = function()
+        local scriptName = "TeuHub (99 Đêm Trong Rừng)"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/teoscrvn/T-ng-h-p-/refs/heads/main/teoupdate.txt", true))()
     end
 })
 
+------------------------------------------------
+-- TAB 5: Script GardenTowerDefense với thông báo
+------------------------------------------------
 Tabs.Main4:AddButton({
     Title = "ShadowHub",
     Description = "Lưu ý cần key, Script ngon nhá",
     Callback = function()
+        local scriptName = "ShadowHub (GardenTowerDefense)"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -611,6 +737,9 @@ Tabs.Main4:AddButton({
     Title = "InfiniteyieldHub",
     Description = "cái này k cần key mà để chỉ dùng noclip hoặc fly thui nhớ đọc kỹ hướng dẫn sử dụng!",
     Callback = function()
+        local scriptName = "Infinite Yield (Universal)"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -623,6 +752,9 @@ Tabs.Main4:AddButton({
     Title = "NeoxHub",
     Description = "nghe nói cái này dùng để antiafk và antiban ai mà bt=))!",
     Callback = function()
+        local scriptName = "NeoxHub Anti-AFK"
+        showScriptNotification(scriptName)
+        
         getgenv().Settings = {
             JoinTeam = true,
             Team = "Marines"
@@ -631,10 +763,16 @@ Tabs.Main4:AddButton({
     end
 })
 
+------------------------------------------------
+-- TAB 6: Script Plan vs Brainrot với thông báo
+------------------------------------------------
 Tabs.Main5:AddButton({
     Title = "Script SpeedHub",
     Description = " ổn dùng ổn định k quá rồi good👍  ",
     Callback = function()
+        local scriptName = "SpeedHub (Plan vs Brainrot)"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
     end
 })
@@ -643,6 +781,18 @@ Tabs.Main5:AddButton({
     Title = "Script KhanhLyHub",
     Description = " ổn dùng ổn định k quá rồi good👍  ",
     Callback = function()
+        local scriptName = "KhanhLyHub (Plan vs Brainrot)"
+        showScriptNotification(scriptName)
+        
         loadstring(game:HttpGet("https://raw.githubusercontent.com/khoavipok/Khanhlytbao/refs/heads/main/Plants%20Vs%20Brainrots"))()
     end
+})
+
+-- THÔNG BÁO KHI LOAD XONG TẤT CẢ SCRIPTS
+showScriptNotification("Team THG Premium Hub")
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Chào mừng 🎉",
+    Text = "Team THG Premium Hub đã sẵn sàng!",
+    Duration = 5,
+    Icon = "rbxassetid://4458901886"
 })
