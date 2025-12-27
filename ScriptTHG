@@ -180,12 +180,12 @@ local Window = Fluent:CreateWindow({
 
 -- 🔖 Các tab (mục chính)
 local Tabs = {
-    Main0 = Window:AddTab({ Title = "Main⬅️" }),
-    Main1 = Window:AddTab({ Title = "BloxFruit⚜️" }),
+    Main0 = Window:AddTab({ Title = "Main🗒️" }),
+    Main1 = Window:AddTab({ Title = "BloxFruit⚔️" }),
     Main2 = Window:AddTab({ Title = "StealABrainGod🐘" }),
     Main3 = Window:AddTab({ Title = "99 Đêm Trong Rừng🌲" }),
-    Main4 = Window:AddTab({ Title = "GardenTowerDefense🌻" }),
-    Main5 = Window:AddTab({ Title = "plan vs brainrot🫨" })
+    Main4 = Window:AddTab({ Title = "GardenTowerDefense🌱" }),
+    Main5 = Window:AddTab({ Title = "plan vs brainrot🐊🫨" })
 }
 
 ------------------------------------------------
@@ -569,6 +569,17 @@ Tabs.Main1:AddButton({
         showScriptNotification(scriptName)
         
         loadstring(game:HttpGet("https://raw.githubusercontent.com/anuragaming1/Meow_gaming/refs/heads/main/Servervip.lua.txt"))()
+    end
+})
+
+Tabs.Main1:AddButton({
+    Title = "XeterHub",
+    Description = "script này chắc ngon tại cx nhiều ng sài",
+    Callback = function()
+        local scriptName = "XeterHub"
+        showScriptNotification(scriptName)
+        
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))()
     end
 })
 
