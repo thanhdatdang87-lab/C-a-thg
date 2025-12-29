@@ -1,0 +1,145 @@
+local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "Tổng Hợp Game 2",
+    Text = " Đợi tí đang khởi động script",
+    Icon = "rbxassetid://120909377603186",
+    Duration = 6
+})
+-- Tổng Hợp Game 2 Cinematic Intro
+local CoreGui = game:GetService("CoreGui")
+
+-- Giao diện chính
+local ScreenGui = Instance.new("ScreenGui", CoreGui)
+ScreenGui.IgnoreGuiInset = true
+ScreenGui.ResetOnSpawn = false
+
+-- Lớp làm mờ nền
+local BlurFrame = Instance.new("Frame", ScreenGui)
+BlurFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+BlurFrame.BackgroundTransparency = 0.4 -- Độ mờ nền
+BlurFrame.Size = UDim2.new(1, 0, 1, 0)
+
+-- Hiệu ứng chữ
+local TextLabel = Instance.new("TextLabel", ScreenGui)
+TextLabel.Size = UDim2.new(1, 0, 1, 0)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Text = "Tổng Hợp Game 2"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextStrokeTransparency = 0.2
+TextLabel.TextStrokeColor3 = Color3.fromRGB(0, 170, 255)
+TextLabel.Font = Enum.Font.GothamBlack
+TextLabel.TextScaled = true
+TextLabel.TextTransparency = 1 -- Bắt đầu ẩn
+
+-- Hiệu ứng fade in/out
+local TweenService = game:GetService("TweenService")
+
+local fadeIn = TweenService:Create(TextLabel, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0})
+local fadeOut = TweenService:Create(TextLabel, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {TextTransparency = 1})
+local fadeBg = TweenService:Create(BlurFrame, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundTransparency = 1})
+
+-- Chạy hiệu ứng
+fadeIn:Play()
+task.wait(2) -- hiển thị chữ trong 2 giây
+fadeOut:Play()
+fadeBg:Play()
+
+-- Xoá sau 3.5s
+task.wait(3.5)
+ScreenGui:Destroy()
+local WindUI =
+loadstring(game:HttpGet("https://raw.githubusercontent.com/teoscrvn/T-ng-h-p-/refs/heads/main/Script%20test%20(1).txt"))()
+
+--🔹 Tạo Window
+local Window = WindUI:CreateWindow({
+    Title = "TÉO HUB",
+    Size = UDim2.fromOffset(580, 340),
+    Theme = "Dark",
+    Transparent = true
+})
+Window:EditOpenButton({
+    Title = "Tổng Hợp Game 2",
+    Icon = "monitor", -- hoặc icon khác
+    CornerRadius = UDim.new(0,16),
+    StrokeThickness = 2,
+    Color = ColorSequence.new(
+        Color3.fromHex("FF0F7B"),
+        Color3.fromHex("F89B29")
+    ),
+    Draggable = true,
+})
+--------------------------------------------------------
+-- 1️⃣ TẤT CẢ GAME CHUNG
+--------------------------------------------------------
+local Tabs = {}
+
+Tabs.Home = Window:Tab({Title = "Trang Chủ"})
+Tabs.Player = Window:Tab({Title = "Player"})
+
+-- Nút chung
+Tabs.Home:Button({
+    Title = "Hello",
+    Callback = function()
+        print("Nút chung Hello")
+    end
+})
+
+Tabs.Player:Toggle({
+    Title = "Chế Độ Pro",
+    Callback = function(state)
+        print("Pro:", state)
+    end
+})
+
+
+--------------------------------------------------------
+-- 2️⃣ GAME RIÊNG – XÁC ĐỊNH BẰNG ID
+--------------------------------------------------------
+
+local gameId = game.PlaceId  -- ID game hiện tại
+
+--------------------------------------------------------
+-- GAME 1 — ID: 123456
+--------------------------------------------------------
+if gameId == 123456 then
+    local G1 = {}
+
+    -- TAG GAME 1
+    G1.Home = Window:Tab({Title = "G1 - Trang Chủ"})
+    G1.Settings = Window:Tab({Title = "G1 - Cài Đặt"})
+
+    -- NÚT GAME 1 (đặt dưới đây → chỉ thuộc game 1)
+    G1.Home:Button({
+        Title = "Chạy hack fly",
+        Callback = function()
+            print("Fly Game 1")
+        end
+    })
+
+    G1.Settings:Toggle({
+        Title = "Auto Farm",
+        Callback = function(state)
+            print("AutoFarm G1:", state)
+        end
+    })
+end
+
+
+--------------------------------------------------------
+-- GAME 2 — ID: 999999
+--------------------------------------------------------
+if gameId == 1111698561 then
+    local G2 = {}
+
+    -- TAG GAME 2
+    G2.Home = Window:Tab({Title = "G2 - Trang Chủ"})
+
+    -- NÚT GAME 2
+    G2.Home:Button({
+        Title = "Aimbot",
+        Callback = function()
+            print("Aimbot Game 2")
+        end
+    })
+end
