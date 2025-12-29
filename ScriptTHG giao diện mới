@@ -49,7 +49,7 @@ fadeBg:Play()
 task.wait(3.5)
 ScreenGui:Destroy()
 local WindUI =
-loadstring(game:HttpGet("https://raw.githubusercontent.com/thanhdatdang87-lab/C-a-thg/refs/heads/main/ScriptTHG", true))()
+
 
 --🔹 Tạo Window
 local Window = WindUI:CreateWindow({
