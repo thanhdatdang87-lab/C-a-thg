@@ -194,7 +194,7 @@ local Tabs = {
 
 Tabs.Main0:AddButton({
     Title = "Bảng tin update script và thông tin lặt vặt",
-    Description = "(ngày 24 tháng 12) Script Banana and Gravity Fixed",
+    Description = "(ngày 04 tháng 1) đã up thêm 1 script bloxfruits",
     Callback = function()
         if setclipboard then
             setclipboard("đã là bảng tin thì k có link đou")
@@ -336,6 +336,17 @@ Tabs.Main1:AddButton({
             Team = "Marines"
         }
         loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/85e904ae1ff30824c1aa007fc7324f8f.lua"))()
+    end
+})
+
+Tabs.Main1:AddButton({
+    Title = "HinishiHub",
+    Description = "Script này cx đc cx k tới nổi",
+    Callback = function()
+        local scriptName = "HoangLongHub"
+        showScriptNotification(scriptName)
+        
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-Hinishi/Hinishi-Hub/refs/heads/main/Freemium.lua"))()
     end
 })
 
