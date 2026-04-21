@@ -1,0 +1,71 @@
+-- [[ OMNI-OBBY GOD V1 ]] --
+local Players = game:GetService("Players")
+local lp = Players.LocalPlayer
+local RunService = game:GetService("RunService")
+
+local AutoParkour = false
+local TeleSpeed = 0.1 -- Thời gian chờ giữa mỗi lần nhảy (chỉnh thấp hơn nếu muốn nhanh hơn)
+
+-- 1. HÀM TÌM CHECKPOINT TIẾP THEO
+local function getNextCheckpoint()
+    local char = lp.Character
+    if not char or not char:FindFirstChild("HumanoidRootPart") then return nil end
+    
+    local currentLevel = lp:FindFirstChild("leaderstats") and lp.leaderstats:FindFirstChild("Stage") 
+    local nextStage = currentLevel and currentLevel.Value + 1 or 1
+    
+    -- Quét trong Workspace tìm Stage tiếp theo
+    for _, v in pairs(workspace:GetDescendants()) do
+        -- MM2 thường đặt tên Stage là số hoặc "Stage", "Checkpoint"
+        if (v.Name == tostring(nextStage)) or (v.Name == "Stage" and v:FindFirstChild("Value") and v.Value.Value == nextStage) then
+            if v:IsA("BasePart") then return v end
+            return v:FindFirstChildWhichIsA("BasePart", true)
+        end
+    end
+    
+    -- Nếu không tìm thấy theo Stage, quét tìm khối Part nào ở phía trước và cao hơn
+    return nil
+end
+
+-- 2. GIAO DIỆN ĐIỀU KHIỂN
+local sg = Instance.new("ScreenGui", game.CoreGui)
+local mainBtn = Instance.new("TextButton", sg)
+mainBtn.Size = UDim2.new(0, 120, 0, 40)
+mainBtn.Position = UDim2.new(0.5, -60, 0.1, 0)
+mainBtn.Text = "AUTO OBBY: OFF"
+mainBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+mainBtn.TextColor3 = Color3.new(1,1,1)
+mainBtn.Font = "SourceSansBold"
+Instance.new("UICorner", mainBtn)
+
+mainBtn.MouseButton1Click:Connect(function()
+    AutoParkour = not AutoParkour
+    mainBtn.Text = "AUTO OBBY: " .. (AutoParkour and "ON" or "OFF")
+    mainBtn.BackgroundColor3 = AutoParkour and Color3.fromRGB(0, 180, 0) or Color3.fromRGB(200, 0, 0)
+end)
+
+-- 3. LOGIC DỊCH CHUYỂN (TELE-PORT)
+task.spawn(function()
+    while true do
+        task.wait(TeleSpeed)
+        if AutoParkour and lp.Character and lp.Character:FindFirstChild("HumanoidRootPart") then
+            local target = getNextCheckpoint()
+            if target then
+                lp.Character.HumanoidRootPart.CFrame = target.CFrame + Vector3.new(0, 3, 0)
+            else
+                -- Nếu không tìm thấy checkpoint tiếp theo, thử bay lên phía trước
+                -- (Dành cho Obby không đặt tên Stage)
+                print("Đang tìm Stage tiếp theo...")
+            end
+        end
+    end
+end)
+
+-- 4. CHỐNG CHẾT (GOD MODE NHẸ)
+RunService.Stepped:Connect(function()
+    if AutoParkour and lp.Character then
+        for _, v in pairs(lp.Character:GetDescendants()) do
+            if v:IsA("BasePart") then v.CanCollide = true end -- Đảm bảo không rơi xuyên sàn
+        end
+    end
+end)
