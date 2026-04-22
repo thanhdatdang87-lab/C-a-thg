@@ -1,0 +1,70 @@
+-- [[ OMNI-TSB - DUMMY AIMLOCK V1 ]] --
+local Players = game:GetService("Players")
+local lp = Players.LocalPlayer
+local Camera = workspace.CurrentCamera
+local RunService = game:GetService("RunService")
+
+local AimDummy = false
+local TargetDummy = nil
+
+-- 1. HÀM TÌM DUMMY GẦN NHẤT
+local function getClosestDummy()
+    local closest = nil
+    local dist = 50 -- Khoảng cách quét Dummy
+    
+    -- TSB thường đặt Dummy trong Workspace hoặc Folder "NPCs"
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v:IsA("Model") and (v.Name:find("Dummy") or v.Name:find("NPC")) then
+            local hrp = v:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                local d = (hrp.Position - lp.Character.HumanoidRootPart.Position).Magnitude
+                if d < dist then
+                    dist = d
+                    closest = hrp
+                end
+            end
+        end
+    end
+    return closest
+end
+
+-- 2. LOGIC KHÓA TÂM (SMOOTH AIM)
+RunService.RenderStepped:Connect(function()
+    if AimDummy then
+        TargetDummy = getClosestDummy()
+        if TargetDummy then
+            -- Khóa camera vào giữa thân Dummy
+            local lookAt = TargetDummy.Position + Vector3.new(0, 1.5, 0)
+            -- Dùng CFrame.lookAt để xoay camera mượt mà
+            Camera.CFrame = CFrame.lookAt(Camera.CFrame.Position, lookAt)
+        end
+    end
+end)
+
+-- 3. GIAO DIỆN NÚT BẤM
+local sg = Instance.new("ScreenGui", game.CoreGui)
+local btn = Instance.new("TextButton", sg)
+btn.Size = UDim2.new(0, 130, 0, 40)
+btn.Position = UDim2.new(0.5, -65, 0.15, 0)
+btn.Text = "AIM DUMMY: OFF"
+btn.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+btn.TextColor3 = Color3.new(1,1,1)
+btn.Font = "SourceSansBold"
+Instance.new("UICorner", btn)
+
+btn.MouseButton1Click:Connect(function()
+    AimDummy = not AimDummy
+    btn.Text = "AIM DUMMY: " .. (AimDummy and "ON" or "OFF")
+    btn.BackgroundColor3 = AimDummy and Color3.fromRGB(0, 150, 255) or Color3.fromRGB(30, 30, 30)
+end)
+
+-- 4. TỰ ĐỘNG XOAY NHÂN VẬT THEO CAMERA (ĐỂ ĐẤM TRÚNG)
+RunService.Heartbeat:Connect(function()
+    if AimDummy and TargetDummy and lp.Character then
+        local hrp = lp.Character:FindFirstChild("HumanoidRootPart")
+        if hrp then
+            local targetPos = Vector3.new(TargetDummy.Position.X, hrp.Position.Y, TargetDummy.Position.Z)
+            hrp.CFrame = CFrame.lookAt(hrp.Position, targetPos)
+        end
+    end
+end)
